@@ -2,15 +2,16 @@
   "schemaVersion": 1,
   "algorithm": "sha256",
   "assets": {
-    "apps/web/app.js": "689cc046e6812b3f3e9ee22c844b320511c4b43c10ae95dee96a646cbc470b10",
-    "apps/web/pro-render.js": "3b82ab85eae73f09ffce24af5a6896519bbc010a429eee2719198b2214ab460d",
+    "apps/web/app.js": "55da514ad9b969ed7a38b06cf629601a9150c2f34188bf818581c7a172ac7fb8",
+    "apps/web/favicon.svg": "2f5d54fdd83281d4dab526164a483ad1f0c1b70a77a036cc9867685321a56ea3",
+    "apps/web/pro-render.js": "01234b094fdb71cd47e4fb4afbbba304cfc3e04820df3d29590bb818bf49b061",
     "apps/web/render.js": "89fd7b11fd5732930f950384ec7b9caad399dfce74f5bb22fd8a723a02823967",
     "apps/web/state.js": "a5505a27d4fc0543447d22086ed798b1d3512b7e4b5542f4f7cee4f687aa7462",
-    "apps/web/styles.css": "6791a0f882cf7244d2b7a7bc0cdd64b25cf1c42517a940c409508bfd007363a5",
+    "apps/web/styles.css": "5756e02cff49137b8c247cba378dde4eadbd5a23bab75626efdf3bfdc8f82317",
     "apps/web/worker.js": "f8ead00dcf856ed056eef05d0750fd8884922a51c3c6f6b3fb6423467cd61980",
-    "index.html": "6677119d17544560d03b1fc084c5015190a5730049ac6eefbc6395bf687fd883",
+    "index.html": "9aa07e5f6fe96ede0c1a34f59a6683055c3f8733ecf4f569da0c12fc7482864b",
     "packages/core/decimal.js": "0851f482cb0713fa2b17c44083ac864c2ba1cc565fa43a5dcf83ed3eafaac6db",
-    "packages/core/index.js": "68bd57cdebd4834b204df097f7170ec5f01c83add8812e075b60f6b70546c76e",
+    "packages/core/index.js": "b81fe02bbae9c5a762be3bfb7f9cd7f66e565260bb9e0a85bb12bce9f10af7c8",
     "packages/core/pro.js": "9a48040cd3664294cbbf14706187be499673746c6595bb34bc6d943e65cdb025"
   }
 }
