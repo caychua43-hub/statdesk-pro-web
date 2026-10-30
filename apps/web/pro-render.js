@@ -2,13 +2,28 @@ import { compareDecimalText } from '../../packages/core/pro.js';
 import { table, labels } from './render.js';
 const el = (tag, text) => { const n = document.createElement(tag); if (text !== undefined)
     n.textContent = text; return n; };
-const names = { ...labels, q1: 'Cuartil Q1', q3: 'Cuartil Q3', iqr: 'Khoảng tứ phân vị', mad: 'MAD (không hiệu chỉnh)', lowerFence: 'Ngưỡng dưới Tukey', upperFence: 'Ngưỡng trên Tukey', xMean: 'Trung bình X', yMean: 'Trung bình Y', slope: 'Hệ số góc', intercept: 'Hệ số chặn', correlation: 'Tương quan Pearson r', rSquared: 'R²' };
+const names = { ...labels, q1: 'Tứ phân vị thứ nhất (Q1)', q3: 'Tứ phân vị thứ ba (Q3)', iqr: 'Khoảng tứ phân vị', mad: 'MAD (không hiệu chỉnh)', lowerFence: 'Ngưỡng dưới Tukey', upperFence: 'Ngưỡng trên Tukey', xMean: 'Trung bình X', yMean: 'Trung bình Y', slope: 'Hệ số góc', intercept: 'Hệ số chặn', correlation: 'Tương quan Pearson r', rSquared: 'R²' };
 const reasons = { INSUFFICIENT_PAIRS: 'Cần ít nhất hai cặp hợp lệ.', CONSTANT_X: 'Cột X không thay đổi nên không xác định hệ số góc và tương quan.', CONSTANT_Y: 'Cột Y không thay đổi nên không xác định tương quan và R².', CONSTANT_X_AND_Y: 'Cả X và Y không thay đổi nên không xác định hồi quy và tương quan.' };
 const display = (v) => v === null ? 'Không xác định' : `${v.exact ? '=' : '≈'} ${v.text}`;
 function metric(value, text) { const strong = el('strong'); if (value === null) {
     strong.textContent = 'Không xác định';
     return strong;
 } const badge = el('span', value.exact ? '=' : '≈'); badge.className = 'accuracy'; badge.title = value.exact ? 'Chính xác' : 'Đã làm tròn'; badge.setAttribute('aria-label', badge.title); const number = el('span', text ?? value.text); number.className = 'stat-value'; strong.append(badge, number); return strong; }
+export function sortedProIndices(dataset, config, r) {
+    const indices = [...r.sourceRowIndices];
+    if (!config.sort)
+        return indices;
+    const { column, direction } = config.sort, factor = direction === 'asc' ? 1 : -1;
+    const numeric = indices.every(i => { const value = dataset.rows[i][column]; try {
+        compareDecimalText(value, value, config.decimal);
+        return true;
+    }
+    catch {
+        return false;
+    } });
+    indices.sort((a, b) => { const x = dataset.rows[a][column], y = dataset.rows[b][column]; const order = numeric ? compareDecimalText(x, y, config.decimal) : x.localeCompare(y, undefined, { numeric: true }); return order * factor; });
+    return indices;
+}
 export function renderPro(container, dataset, config, r, elapsed) {
     container.replaceChildren();
     container.append(el('p', `Tổng ${r.counts.total} hàng • Được chọn ${r.counts.selected} • Hợp lệ ${r.counts.valid} • Thiếu ${r.counts.missing} • Loại bởi bộ lọc ${r.counts.total - r.counts.selected}`));
@@ -67,18 +82,6 @@ export function renderPro(container, dataset, config, r, elapsed) {
         if (r.groupTotal > r.groups.length)
             container.append(el('p', `Hiển thị ${r.groups.length} / ${r.groupTotal} nhóm; các tổng tính trên toàn bộ dữ liệu.`));
     }
-    const indices = [...r.sourceRowIndices];
-    if (config.sort) {
-        const { column, direction } = config.sort;
-        const factor = direction === 'asc' ? 1 : -1;
-        indices.sort((a, b) => { const x = dataset.rows[a][column], y = dataset.rows[b][column]; if (column === config.valueColumn || column === config.sort?.column && r.mode === 'relationship' && column !== config.groupColumn) {
-            try {
-                return compareDecimalText(x, y, config.decimal) * factor;
-            }
-            catch {
-                return x.localeCompare(y) * factor;
-            }
-        } return x.localeCompare(y, undefined, { numeric: true }) * factor; });
-    }
+    const indices = sortedProIndices(dataset, config, r);
     container.append(el('h3', 'Các hàng nguồn hợp lệ'), table(dataset, indices));
 }

@@ -26,11 +26,13 @@ try {
     }
 }
 catch { }
+const preferenceSaveError = 'Không thể lưu tùy chọn giao diện trên thiết bị này.';
 const savePrefs = () => { try {
     localStorage.setItem(prefKey, JSON.stringify({ version: 1, mode: pro.mode, digits: pro.digits, reducedMotion }));
+    return true;
 }
 catch {
-    status('Không thể lưu tùy chọn giao diện trên thiết bị này.');
+    return false;
 } };
 const status = (message) => { $('status').textContent = message; };
 function error(e, source = 'data') { const x = e; const details = x.issues?.map(i => `${source === 'csv' ? 'Dòng CSV' : 'Hàng dữ liệu'} ${i.row}, cột ${i.column}: ${i.code}`).join('; '); status(`${x.code ?? 'LỖI'}: ${x.message ?? String(e)}${details ? ' — ' + details : ''}${x.issueCount > 20 ? ` (${x.issueCount} lỗi)` : ''}`); }
@@ -75,7 +77,7 @@ catch {
     host.append(document.createTextNode('Không có gợi ý; kiểm tra dấu thập phân và dữ liệu.')); }
 function proControls() { for (const b of document.querySelectorAll('[data-mode]'))
     b.setAttribute('aria-pressed', String(b.dataset.mode === pro.mode)); $('pair-label').hidden = pro.mode !== 'relationship'; input('pro-digits').value = String(pro.digits); document.body.classList.toggle('reduce-motion', reducedMotion); $('motion').setAttribute('aria-pressed', String(reducedMotion)); }
-function proChanged() { stop(); state.invalidateResult(); freshness(); savePrefs(); proControls(); status('Thiết lập đã thay đổi. Tính lại để cập nhật kết quả.'); }
+function proChanged() { stop(); state.invalidateResult(); freshness(); const saved = savePrefs(); proControls(); status(saved ? 'Thiết lập đã thay đổi. Tính lại để cập nhật kết quả.' : preferenceSaveError); }
 function replace(p, saved = false) { state.replace(p); pro.pairColumn = null; importGeneration++; stop(); state.dirty = !saved; configValid = true; controls(); $('result').textContent = 'Dữ liệu đã thay đổi. Nhấn Tính toán để xem kết quả.'; freshness(); }
 function config() { if (!state.project)
     return; const c = state.project.config; try {
@@ -138,8 +140,9 @@ select('pair').onchange = () => { pro.pairColumn = select('pair').value === '' ?
 input('pro-digits').oninput = () => { const raw = input('pro-digits').value; const n = Number(raw); stop(); state.invalidateResult(); freshness(); if (raw === '' || !Number.isInteger(n) || n < 0 || n > 50) {
     status('Chữ số Pro phải là số nguyên từ 0 đến 50.');
     return;
-} pro.digits = n; savePrefs(); status('Thiết lập đã thay đổi. Tính lại để cập nhật kết quả.'); };
-$('motion').onclick = () => { reducedMotion = !reducedMotion; savePrefs(); proControls(); };
+} pro.digits = n; const saved = savePrefs(); status(saved ? 'Thiết lập đã thay đổi. Tính lại để cập nhật kết quả.' : preferenceSaveError); };
+$('motion').onclick = () => { reducedMotion = !reducedMotion; if (!savePrefs())
+    status(preferenceSaveError); proControls(); };
 proControls();
 $('calculate').onclick = () => { if (!state.project) {
     status('Hãy nhập dữ liệu trước.');
@@ -153,7 +156,7 @@ $('calculate').onclick = () => { if (!state.project) {
 } if (pro.mode === 'relationship' && pro.pairColumn === null) {
     status('Hãy chọn cột Y.');
     return;
-} stop(); const id = state.start(); freshness(); const p = state.project; worker = new Worker('/statdesk-pro-web/apps/web/worker.js', { type: 'module' }); status('Đang tính toán…'); worker.onmessage = (event) => { const data = event.data; if (data.error) {
+} stop(); const id = state.start(); freshness(); const p = state.project; worker = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' }); status('Đang tính toán…'); worker.onmessage = (event) => { const data = event.data; if (data.error) {
     if (state.fail(data.id)) {
         freshness();
         error(data.error, 'data');
