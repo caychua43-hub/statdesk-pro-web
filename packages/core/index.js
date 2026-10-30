@@ -16,17 +16,17 @@ const metricKeys = ['count', 'sum', 'mean', 'min', 'max', 'median', 'modes', 'po
 export function validateDataset(v) {
     if (!obj(v) || v.schemaVersion !== 1 || !str(v.id) || !text(v.name) || !str(v.createdAt) || !str(v.updatedAt) || !Number.isSafeInteger(v.revision) || v.revision < 0 || !obj(v.source) || !['manual', 'csv', 'json', 'sample'].includes(v.source.kind) || (v.source.name !== undefined && !text(v.source.name)))
         return fail('INVALID_DATASET', 'Invalid dataset metadata');
-    if (!Array.isArray(v.columns) || v.columns.length < 1 || v.columns.length > LIMITS.columns || !v.columns.every(text) || !Array.isArray(v.rows) || v.rows.length > LIMITS.rows || v.rows.length * v.columns.length > LIMITS.cells)
+    if (!Array.isArray(v.columns) || v.columns.length < 1 || v.columns.length > LIMITS.columns || !Array.from(v.columns).every(text) || !Array.isArray(v.rows) || v.rows.length > LIMITS.rows || v.rows.length * v.columns.length > LIMITS.cells)
         return fail('DATASET_LIMIT', 'Invalid dataset dimensions');
     for (const row of v.rows)
-        if (!Array.isArray(row) || row.length !== v.columns.length || !row.every(text))
+        if (!Array.isArray(row) || row.length !== v.columns.length || !Array.from(row).every(text))
             return fail('INVALID_ROW', 'Invalid row width or field');
     return { schemaVersion: 1, id: v.id, name: v.name, columns: [...v.columns], rows: v.rows.map((r) => [...r]), createdAt: v.createdAt, updatedAt: v.updatedAt, revision: v.revision, source: { kind: v.source.kind, ...(v.source.name === undefined ? {} : { name: v.source.name }) } };
 }
 export function validateConfig(v, dataset) {
     const d = validateDataset(dataset);
     const col = (n) => Number.isInteger(n) && n >= 0 && n < d.columns.length;
-    if (!obj(v) || !col(v.valueColumn) || !(v.groupColumn === null || col(v.groupColumn)) || !['reject', 'skip'].includes(v.missing) || !['dot', 'comma'].includes(v.decimal) || !Number.isInteger(v.precision) || v.precision < 0 || v.precision > 10 || !text(v.groupFilter) || !text(v.query) || !Array.isArray(v.metrics) || v.metrics.length > metricKeys.length || new Set(v.metrics).size !== v.metrics.length || !v.metrics.every(x => metricKeys.includes(x)) || !(v.sort === null || (obj(v.sort) && col(v.sort.column) && ['asc', 'desc'].includes(v.sort.direction))))
+    if (!obj(v) || !col(v.valueColumn) || !(v.groupColumn === null || col(v.groupColumn)) || !['reject', 'skip'].includes(v.missing) || !['dot', 'comma'].includes(v.decimal) || !Number.isInteger(v.precision) || v.precision < 0 || v.precision > 10 || !text(v.groupFilter) || !text(v.query) || !Array.isArray(v.metrics) || v.metrics.length > metricKeys.length || new Set(v.metrics).size !== v.metrics.length || !Array.from(v.metrics).every(x => metricKeys.includes(x)) || !(v.sort === null || (obj(v.sort) && col(v.sort.column) && ['asc', 'desc'].includes(v.sort.direction))))
         return fail('INVALID_CONFIG', 'Invalid analysis configuration');
     return { valueColumn: v.valueColumn, groupColumn: v.groupColumn, missing: v.missing, decimal: v.decimal, precision: v.precision, groupFilter: v.groupFilter, query: v.query, metrics: [...v.metrics], sort: v.sort === null ? null : { column: v.sort.column, direction: v.sort.direction } };
 }
@@ -157,7 +157,7 @@ export function analyze(dataset, config) {
                 code = 'INVALID_NUMBER';
             else {
                 let n = Number(c.decimal === 'comma' ? raw.replace(',', '.') : raw);
-                if (!Number.isFinite(n) || (Number.isInteger(n) && !Number.isSafeInteger(n)))
+                if (!Number.isFinite(n) || (Number.isInteger(n) && !Number.isSafeInteger(n)) || (n === 0 && /[1-9]/.test(raw.split(/[eE]/, 1)[0])))
                     code = 'NUMBER_RANGE';
                 else {
                     values.push(n);
