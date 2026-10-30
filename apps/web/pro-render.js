@@ -50,6 +50,7 @@ export function renderPro(container, dataset, config, r, elapsed) {
     if (r.mode === 'relationship' && r.relationshipReason)
         container.append(el('p', `Không xác định: ${reasons[r.relationshipReason] ?? r.relationshipReason}`));
     if (r.mode === 'distribution') {
+        container.append(el('p', 'Tứ phân vị dùng nội suy tuyến tính Type 7: vị trí h = 1 + (n − 1)p với p = 0,25 hoặc 0,75. Các quy ước tứ phân vị khác có thể cho kết quả khác.'));
         container.append(el('p', `Điểm ngoại lệ tiềm năng: ${r.outlierCount ?? 0}. Hàng dữ liệu: ${(r.outlierRowIndices ?? []).slice(0, 200).map(i => i + 1).join(', ') || 'không có'}. Tối đa 200 hàng được hiển thị. Không tự xóa quan sát.`));
     }
     for (const note of r.notes)

@@ -15,6 +15,7 @@ let importGeneration = 0;
 const prefKey = 'statdesk.pro.preferences.v1';
 let pro = { mode: 'precision', digits: 2, pairColumn: null };
 let reducedMotion = false;
+let darkTheme = false;
 try {
     const saved = JSON.parse(localStorage.getItem(prefKey) ?? 'null');
     if (saved?.version === 1) {
@@ -23,12 +24,13 @@ try {
         if (Number.isInteger(saved.digits) && saved.digits >= 0 && saved.digits <= 50)
             pro.digits = saved.digits;
         reducedMotion = saved.reducedMotion === true;
+        darkTheme = saved.theme === 'dark';
     }
 }
 catch { }
 const preferenceSaveError = 'Không thể lưu tùy chọn giao diện trên thiết bị này.';
 const savePrefs = () => { try {
-    localStorage.setItem(prefKey, JSON.stringify({ version: 1, mode: pro.mode, digits: pro.digits, reducedMotion }));
+    localStorage.setItem(prefKey, JSON.stringify({ version: 1, mode: pro.mode, digits: pro.digits, reducedMotion, theme: darkTheme ? 'dark' : 'light' }));
     return true;
 }
 catch {
@@ -36,8 +38,8 @@ catch {
 } };
 const status = (message) => { $('status').textContent = message; };
 function error(e, source = 'data') { const x = e; const details = x.issues?.map(i => `${source === 'csv' ? 'Dòng CSV' : 'Hàng dữ liệu'} ${i.row}, cột ${i.column}: ${i.code}`).join('; '); status(`${x.code ?? 'LỖI'}: ${x.message ?? String(e)}${details ? ' — ' + details : ''}${x.issueCount > 20 ? ` (${x.issueCount} lỗi)` : ''}`); }
-function stop() { worker?.terminate(); worker = null; state.cancel(); }
-function freshness() { const marker = $('result-freshness'); marker.hidden = !state.resultStale; marker.textContent = state.resultStale ? 'Kết quả trước đó chưa cập nhật theo thiết lập hiện tại. Hãy tính lại trước khi sử dụng hoặc in.' : ''; }
+function stop() { worker?.terminate(); worker = null; state.cancel(); $('cancel').disabled = true; $('calculate').setAttribute('aria-busy', 'false'); }
+function freshness() { const marker = $('result-freshness'); marker.hidden = !state.resultStale; marker.textContent = state.resultStale ? 'Kết quả trước đó chưa cập nhật theo thiết lập hiện tại. Hãy tính lại trước khi sử dụng hoặc in.' : ''; $('view-results').hidden = !state.result || state.resultStale; }
 function dirty() { $('dirty').textContent = state.project ? (state.dirty ? 'Có thay đổi chưa lưu' : 'Đã lưu') : 'Chưa có dữ liệu'; }
 function options(s, items, selected) { s.replaceChildren(); for (const [value, label] of items) {
     const o = document.createElement('option');
@@ -76,9 +78,9 @@ catch {
 } }); if (!found)
     host.append(document.createTextNode('Không có gợi ý; kiểm tra dấu thập phân và dữ liệu.')); }
 function proControls() { for (const b of document.querySelectorAll('[data-mode]'))
-    b.setAttribute('aria-pressed', String(b.dataset.mode === pro.mode)); $('pair-label').hidden = pro.mode !== 'relationship'; input('pro-digits').value = String(pro.digits); document.body.classList.toggle('reduce-motion', reducedMotion); $('motion').setAttribute('aria-pressed', String(reducedMotion)); }
+    b.setAttribute('aria-pressed', String(b.dataset.mode === pro.mode)); $('pair-label').hidden = pro.mode !== 'relationship'; input('pro-digits').value = String(pro.digits); document.body.classList.toggle('reduce-motion', reducedMotion); document.body.classList.toggle('dark', darkTheme); $('theme').setAttribute('aria-pressed', String(darkTheme)); $('motion').setAttribute('aria-pressed', String(reducedMotion)); }
 function proChanged() { stop(); state.invalidateResult(); freshness(); const saved = savePrefs(); proControls(); status(saved ? 'Thiết lập đã thay đổi. Tính lại để cập nhật kết quả.' : preferenceSaveError); }
-function replace(p, saved = false) { state.replace(p); pro.pairColumn = null; importGeneration++; stop(); state.dirty = !saved; configValid = true; controls(); $('result').textContent = 'Dữ liệu đã thay đổi. Nhấn Tính toán để xem kết quả.'; freshness(); }
+function replace(p, saved = false) { state.replace(p); pro.pairColumn = null; importGeneration++; stop(); state.dirty = !saved; configValid = true; controls(); $('data-entry').open = false; $('result').textContent = 'Dữ liệu đã thay đổi. Nhấn Tính toán để xem kết quả.'; freshness(); }
 function config() { if (!state.project)
     return; const c = state.project.config; try {
     state.update({ ...c, valueColumn: Number(select('value').value), groupColumn: select('group').value === '' ? null : Number(select('group').value), groupFilter: input('groupFilter').value, query: input('query').value, missing: select('missing').value, decimal: select('decimal').value, precision: Number(input('precision').value), sort: select('sort').value === '' ? null : { column: Number(select('sort').value), direction: select('direction').value }, metrics: [...document.querySelectorAll('#metrics input:checked')].map(x => x.value) });
@@ -96,7 +98,7 @@ catch (e) {
     freshness();
     error(e);
 } }
-function libraryRefresh() { library = loadLibrary(localStorage); options(select('projects'), library.map(p => [p.dataset.id, p.dataset.name]), library[0]?.dataset.id ?? ''); }
+function libraryRefresh() { library = loadLibrary(localStorage); const preferred = state.project?.dataset.id ?? select('projects').value; options(select('projects'), library.map(p => [p.dataset.id, p.dataset.name]), library.some(p => p.dataset.id === preferred) ? preferred : library[0]?.dataset.id ?? ''); }
 function download(name, text, type) { const url = URL.createObjectURL(new Blob([text], { type })); const a = document.createElement('a'); a.href = url; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
 async function readFile(file, kind) { const generation = ++importGeneration; try {
     if (file.size > LIMITS.bytes)
@@ -144,34 +146,78 @@ input('pro-digits').oninput = () => { const raw = input('pro-digits').value; con
 $('motion').onclick = () => { reducedMotion = !reducedMotion; if (!savePrefs())
     status(preferenceSaveError); proControls(); };
 proControls();
-$('calculate').onclick = () => { if (!state.project) {
-    status('Hãy nhập dữ liệu trước.');
-    return;
-} if (!configValid) {
-    status('Thiết lập chưa hợp lệ; hãy sửa trước khi tính.');
-    return;
-} const digits = input('pro-digits').value; if (digits === '' || !Number.isInteger(Number(digits)) || Number(digits) < 0 || Number(digits) > 50) {
-    status('Chữ số Pro phải là số nguyên từ 0 đến 50.');
-    return;
-} if (pro.mode === 'relationship' && pro.pairColumn === null) {
-    status('Hãy chọn cột Y.');
-    return;
-} stop(); const id = state.start(); freshness(); const p = state.project; worker = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' }); status('Đang tính toán…'); worker.onmessage = (event) => { const data = event.data; if (data.error) {
-    if (state.fail(data.id)) {
-        freshness();
-        error(data.error, 'data');
+$('calculate').onclick = () => {
+    if (!state.project) {
+        status('Hãy nhập dữ liệu trước.');
+        return;
     }
-    worker?.terminate();
-    worker = null;
-    return;
-} if (state.complete(data.id, data.result)) {
-    elapsed = data.elapsed;
-    renderPro($('result'), p.dataset, p.config, data.result, elapsed);
-    $('results').classList.remove('complete');
-    requestAnimationFrame(() => $('results').classList.add('complete'));
+    if (!configValid) {
+        status('Thiết lập chưa hợp lệ; hãy sửa trước khi tính.');
+        return;
+    }
+    const digits = input('pro-digits').value;
+    if (digits === '' || !Number.isInteger(Number(digits)) || Number(digits) < 0 || Number(digits) > 50) {
+        status('Chữ số Pro phải là số nguyên từ 0 đến 50.');
+        return;
+    }
+    if (pro.mode === 'relationship' && pro.pairColumn === null) {
+        status('Hãy chọn cột Y.');
+        return;
+    }
+    stop();
+    const id = state.start();
     freshness();
-    status('Đã tính xong.');
-} worker?.terminate(); worker = null; }; worker.onerror = () => { stop(); status('Không thể chạy bộ tính toán.'); }; worker.postMessage({ id, project: p, pro: { ...pro } }); };
+    const p = state.project;
+    let task;
+    try {
+        task = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' });
+    }
+    catch {
+        stop();
+        status('Không thể khởi tạo bộ tính toán. Hãy tải lại trang hoặc dùng trình duyệt hỗ trợ Web Worker.');
+        return;
+    }
+    worker = task;
+    $('cancel').disabled = false;
+    $('calculate').setAttribute('aria-busy', 'true');
+    status('Đang tính toán…');
+    const finish = () => { task.terminate(); if (worker === task) {
+        worker = null;
+        $('cancel').disabled = true;
+        $('calculate').setAttribute('aria-busy', 'false');
+    } };
+    task.onmessage = (event) => {
+        if (worker !== task)
+            return;
+        const data = event.data;
+        if (data.error) {
+            if (state.fail(data.id)) {
+                freshness();
+                error(data.error, 'data');
+            }
+            finish();
+            return;
+        }
+        if (state.complete(data.id, data.result)) {
+            elapsed = data.elapsed;
+            renderPro($('result'), p.dataset, p.config, data.result, elapsed);
+            $('results').classList.remove('complete');
+            requestAnimationFrame(() => $('results').classList.add('complete'));
+            freshness();
+            status('Đã tính xong.');
+        }
+        finish();
+    };
+    task.onerror = () => { if (worker !== task)
+        return; stop(); status('Không thể chạy bộ tính toán.'); };
+    try {
+        task.postMessage({ id, project: p, pro: { ...pro } });
+    }
+    catch {
+        stop();
+        status('Không thể gửi dữ liệu đến bộ tính toán. Hãy thử lại hoặc nhập bảng nhỏ hơn.');
+    }
+};
 $('cancel').onclick = () => { stop(); status('Đã hủy tính toán; kết quả trước đó được giữ lại.'); };
 $('save').onclick = () => { try {
     if (!state.project)
@@ -229,8 +275,12 @@ $('backup').onclick = () => { try {
 catch (e) {
     error(e);
 } };
-$('theme').onclick = () => { document.body.classList.toggle('dark'); };
-$('print').onclick = () => { if (state.resultStale) {
+$('theme').onclick = () => { darkTheme = !darkTheme; document.body.classList.toggle('dark', darkTheme); $('theme').setAttribute('aria-pressed', String(darkTheme)); if (!savePrefs())
+    status(preferenceSaveError); };
+$('print').onclick = () => { if (!state.result) {
+    status('Hãy tính toán trước khi in kết quả.');
+    return;
+} if (state.resultStale) {
     status('Kết quả chưa cập nhật; hãy tính lại trước khi in.');
     return;
 } window.print(); };

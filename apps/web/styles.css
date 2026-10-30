@@ -2,4 +2,21 @@
 [hidden]{display:none!important}
 #analysis>.actions{position:sticky;top:8px;z-index:2;padding:8px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 5px 14px #10233f18}
 
-details{border:1px solid var(--line);border-radius:10px;padding:10px 12px}summary{cursor:pointer;font-weight:650;color:var(--text)}details[open] summary{margin-bottom:8px}#analysis{transition:border-color .2s,box-shadow .2s}#analysis:focus-within{border-color:var(--cyan);box-shadow:0 0 0 3px #0aa6b72b,0 8px 28px #245ae81c}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 12px}summary{cursor:pointer;font-weight:650;color:var(--text);min-height:44px;display:list-item;padding:10px 0}details[open] summary{margin-bottom:8px}#analysis{transition:border-color .2s,box-shadow .2s}#analysis:focus-within{border-color:var(--cyan);box-shadow:0 0 0 3px #0aa6b72b,0 8px 28px #245ae81c}
+
+/* Each column flows independently: tall results never push analysis downward. */
+:root{--cyan:#087585}
+.workspace-column{display:flex;flex-direction:column;gap:16px;min-width:0;align-self:start}
+.input-column{grid-column:1}.output-column{grid-column:2}
+.workspace-column>section{flex:none;align-self:stretch}
+#results,#library{align-self:stretch}
+section{scroll-margin-top:16px}
+.result-link{display:inline-flex;align-items:center;min-height:44px;padding:10px 13px;border:1px solid var(--line);border-radius:10px;color:var(--blue);background:var(--panel);font-weight:600;text-decoration:none}
+.result-link:hover{box-shadow:0 0 0 2px var(--line)}
+.metric-options label{min-height:44px;padding:8px 4px;gap:6px;cursor:pointer}
+button,select{min-height:44px;touch-action:manipulation}
+.file-label input{min-height:44px;padding-top:8px}
+.file-label input::file-selector-button{min-height:32px;cursor:pointer}
+h1,h2{text-wrap:balance}
+@media(max-width:900px){.workspace-column{display:contents}main{padding-bottom:max(50px,env(safe-area-inset-bottom))}input,select,textarea{font-size:16px}nav a{min-height:44px;display:inline-flex;align-items:center}.actions{gap:10px}#analysis>.actions{top:0}.metric-options{gap:8px}}
+@media print{.workspace-column{display:contents}.result-link{display:none!important}}
