@@ -1,0 +1,1255 @@
+{
+  "createdAt": "2026-10-31T10:05:17.198Z",
+  "toolUrl": "https://caychua43-hub.github.io/statdesk-pro-web/",
+  "reportUrl": "https://caychua43-hub.github.io/statdesk-pro-web/report.html",
+  "sourceAppCommit": "a0540cadedae0b35d2274ee24e1ae4b1e7b2812b",
+  "toolDeployment": {
+    "mode": "tool",
+    "phase": "verified",
+    "commit": "a0540cadedae0b35d2274ee24e1ae4b1e7b2812b",
+    "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+    "pages": {
+      "url": "https://github.com/caychua43-hub/statdesk-pro-web/actions/runs/41191221535",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "verifiedAt": "2026-10-31T10:04:53.667Z",
+    "matchedFiles": 13
+  },
+  "checks": {
+    "journeys": 46,
+    "professor": 22,
+    "native": 64,
+    "typecheck": "exit 0"
+  },
+  "cases": [
+    {
+      "index": 1,
+      "name": "Mở Web công khai",
+      "action": "Mở URL public, đọc tiêu đề, màn hình và trạng thái khởi tạo.",
+      "started": "2026-10-31T09:31:21.137Z",
+      "durationMs": 1209,
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "title": "StatDesk Pro",
+        "browser": "156.0.4314.50",
+        "viewport": {
+          "width": 1365,
+          "height": 900
+        }
+      },
+      "screenshot": "report-assets/screenshots/case-01-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-01-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 0
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Bắt đầu bằng dữ liệu mẫu hoặc nhập bảng của bạn.",
+      "fixture": "Trang public vừa tải, chưa có dữ liệu.",
+      "expected": "HTTP 200; title và h1 là StatDesk Pro; màn hình khởi tạo có nút dữ liệu mẫu.",
+      "rationale": "Xác minh danh tính ứng dụng trước khi thử; trang trắng hoặc trang lỗi không được tính là đã mở tool.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 2,
+      "name": "Thống kê dữ liệu mẫu",
+      "action": "Bấm Dùng dữ liệu mẫu → Độ chính xác → Tính toán; đối chiếu số lượng, tổng, trung bình.",
+      "started": "2026-10-31T09:31:22.359Z",
+      "durationMs": 1726,
+      "status": "PASS",
+      "detail": "Tổng 4 hàng • Được chọn 4 • Hợp lệ 4 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 3.2 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n4\nTổng\n=\n80.00\nTrung bình\n=\n20.00\nNhỏ nhất\n=\n10.00\nLớn nhất\n=\n30.00\nTrung vị\n=\n20.00\nPhương sai tổng thể\n=\n50.00\nPhương sai mẫu\n≈\n66.67\nĐộ lệch chuẩn tổng thể\n≈\n7.07\nĐộ lệch chuẩn mẫu\n≈\n8.16\nMốt\n= 20\nTần suất\n10\n1 (25.00%)\n20\n2 (50.00%)\n30\n1 (25.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tNhóm\tGiá trị\n1\tA\t10\n2\tA\t20\n3\tB\t20\n4\tB\t30",
+      "screenshot": "report-assets/screenshots/case-02-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-02-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 0
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "Mẫu tổng hợp: 10, 20, 20, 30.",
+      "expected": "n=4; tổng=80; trung bình=20.",
+      "rationale": "Tổng được đối chiếu bằng 10+20+20+30=80 và mean=80/4=20, độc lập với cách renderer trình bày.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 3,
+      "name": "Phân phối và Type 7",
+      "action": "Bấm Phân phối → Tính toán; kiểm tra Q1=17,5 và Q3=22,5 cùng giải thích phương pháp.",
+      "started": "2026-10-31T09:31:24.098Z",
+      "durationMs": 812,
+      "status": "PASS",
+      "detail": "Tổng 4 hàng • Được chọn 4 • Hợp lệ 4 • Thiếu 0 • Loại bởi bộ lọc 0\n\nPhân phối và ngoại lệ tiềm năng • 4.5 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n4\nTổng\n=\n80.00\nTrung bình\n=\n20.00\nNhỏ nhất\n=\n10.00\nLớn nhất\n=\n30.00\nTrung vị\n=\n20.00\nPhương sai tổng thể\n=\n50.00\nPhương sai mẫu\n≈\n66.67\nĐộ lệch chuẩn tổng thể\n≈\n7.07\nĐộ lệch chuẩn mẫu\n≈\n8.16\nTứ phân vị thứ nhất (Q1)\n=\n17.50\nTứ phân vị thứ ba (Q3)\n=\n22.50\nKhoảng tứ phân vị\n=\n5.00\nMAD (không hiệu chỉnh)\n=\n5.00\nNgưỡng dưới Tukey\n=\n10.00\nNgưỡng trên Tukey\n=\n30.00\nMốt\n= 20\n\nTứ phân vị dùng nội suy tuyến tính Type 7: vị trí h = 1 + (n − 1)p với p = 0,25 hoặc 0,75. Các quy ước tứ phân vị khác có thể cho kết quả khác.\n\nĐiểm ngoại lệ tiềm năng: 0. Hàng dữ liệu: không có. Tối đa 200 hàng được hiển thị. Không tự xóa quan sát.\n\nMAD là trung vị độ lệch tuyệt đối chưa chuẩn hóa. Nhãn ngoại lệ tiềm năng không phải kiểm định và không xóa quan sát.\n\nTần suất\n10\n1 (25.00%)\n20\n2 (50.00%)\n30\n1 (25.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tNhóm\tGiá trị\n1\tA\t10\n2\tA\t20\n3\tB\t20\n4\tB\t30",
+      "screenshot": "report-assets/screenshots/case-03-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-03-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 917
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "Dãy đã sắp xếp: 10,20,20,30; p=0.25 và 0.75.",
+      "expected": "Q1=17.50, Q3=22.50 và có chú thích Type 7.",
+      "rationale": "Vị trí h=1+(4−1)p cho Q1=10+0.75×10 và Q3=20+0.25×10. Không đối chiếu với một quy ước tứ phân vị khác.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 4,
+      "name": "Hồi quy y=2x+3",
+      "action": "Nhập x,y với 3 cặp (1,5),(2,7),(3,9); chọn Cột Y và tính Mối quan hệ.",
+      "started": "2026-10-31T09:31:24.929Z",
+      "durationMs": 1135,
+      "status": "PASS",
+      "detail": "Tổng 3 hàng • Được chọn 3 • Hợp lệ 3 • Thiếu 0 • Loại bởi bộ lọc 0\n\nTương quan và hồi quy tuyến tính • 6.2 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n3\nTổng\n=\n6.00\nTrung bình\n=\n2.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n3.00\nTrung vị\n=\n2.00\nPhương sai tổng thể\n≈\n0.67\nPhương sai mẫu\n=\n1.00\nĐộ lệch chuẩn tổng thể\n≈\n0.82\nĐộ lệch chuẩn mẫu\n=\n1.00\nTrung bình X\n=\n2.00\nTrung bình Y\n=\n7.00\nHệ số góc\n=\n2.00\nHệ số chặn\n=\n3.00\nTương quan Pearson r\n=\n1.00\nR²\n=\n1.00\n\nChỉ mô tả quan hệ tuyến tính trong các cặp hợp lệ; không khẳng định nhân quả, p-value hoặc ngoại suy.\n\nTần suất\n1\n1 (33.33%)\n2\n1 (33.33%)\n3\n1 (33.33%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\ty\n1\t1\t5\n2\t2\t7\n3\t3\t9",
+      "screenshot": "report-assets/screenshots/case-04-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-04-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 33
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "x,y: (1,5), (2,7), (3,9).",
+      "expected": "Slope=2, intercept=3, Pearson r=1.",
+      "rationale": "Cả ba điểm nằm chính xác trên y=2x+3; đây là oracle tuyến tính hữu ích cho chọn cặp, worker và hiển thị.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 5,
+      "name": "Lọc nhóm chính xác",
+      "action": "Nhập Nhóm,x,y; chọn cột x, nhóm A trong Thiết lập nâng cao → Tính toán.",
+      "started": "2026-10-31T09:31:26.089Z",
+      "durationMs": 1295,
+      "status": "PASS",
+      "detail": "Tổng 4 hàng • Được chọn 2 • Hợp lệ 2 • Thiếu 0 • Loại bởi bộ lọc 2\n\nThống kê độ chính xác cao • 6.1 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n2\nTổng\n=\n3.00\nTrung bình\n=\n1.50\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n2.00\nTrung vị\n=\n1.50\nPhương sai tổng thể\n=\n0.25\nPhương sai mẫu\n=\n0.50\nĐộ lệch chuẩn tổng thể\n=\n0.50\nĐộ lệch chuẩn mẫu\n≈\n0.71\nTần suất\n1\n1 (50.00%)\n2\n1 (50.00%)\nTóm tắt theo nhóm\nA: n=2, tổng== 3.00, trung bình== 1.50\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tNhóm\tx\ty\n1\tA\t1\t5\n2\tA\t2\t7",
+      "screenshot": "report-assets/screenshots/case-05-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-05-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 1339
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "Nhóm A có x=1,2; nhóm B có x=3,4.",
+      "expected": "Lọc A chỉ còn 2 hàng, tổng=3, mean=1.50.",
+      "rationale": "Lọc nhóm là phép so khớp chính xác, phải có tác động thật đến tập quan sát và các thẻ kết quả.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 6,
+      "name": "Tìm trong hàng",
+      "action": "Xóa lọc nhóm, nhập B vào Tìm trong hàng → Tính toán; chỉ còn hai hàng nhóm B.",
+      "started": "2026-10-31T09:31:27.417Z",
+      "durationMs": 675,
+      "status": "PASS",
+      "detail": "Tổng 4 hàng • Được chọn 2 • Hợp lệ 2 • Thiếu 0 • Loại bởi bộ lọc 2\n\nThống kê độ chính xác cao • 4.2 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n2\nTổng\n=\n7.00\nTrung bình\n=\n3.50\nNhỏ nhất\n=\n3.00\nLớn nhất\n=\n4.00\nTrung vị\n=\n3.50\nPhương sai tổng thể\n=\n0.25\nPhương sai mẫu\n=\n0.50\nĐộ lệch chuẩn tổng thể\n=\n0.50\nĐộ lệch chuẩn mẫu\n≈\n0.71\nTần suất\n3\n1 (50.00%)\n4\n1 (50.00%)\nTóm tắt theo nhóm\nB: n=2, tổng== 7.00, trung bình== 3.50\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tNhóm\tx\ty\n3\tB\t3\t9\n4\tB\t4\t11",
+      "screenshot": "report-assets/screenshots/case-06-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-06-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 1339
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "Cùng bảng nhóm; bỏ group filter rồi query B.",
+      "expected": "Chỉ 2 hàng B; tổng=7 và count=2.",
+      "rationale": "Tìm kiếm áp dụng lên hàng dữ liệu; không chỉ tô màu phần xem trước mà giữ nguyên phép tính.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 7,
+      "name": "CSV dấu chấm phẩy, số dùng dấu phẩy",
+      "action": "Nhập x;y với 1,5 và 2,5; đổi Dấu thập phân sang Dấu phẩy → Tính toán.",
+      "started": "2026-10-31T09:31:28.122Z",
+      "durationMs": 1054,
+      "status": "PASS",
+      "detail": "Tổng 2 hàng • Được chọn 2 • Hợp lệ 2 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 6.2 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n2\nTổng\n=\n4.00\nTrung bình\n=\n2.00\nNhỏ nhất\n=\n1.50\nLớn nhất\n=\n2.50\nTrung vị\n=\n2.00\nPhương sai tổng thể\n=\n0.25\nPhương sai mẫu\n=\n0.50\nĐộ lệch chuẩn tổng thể\n=\n0.50\nĐộ lệch chuẩn mẫu\n≈\n0.71\nTần suất\n1.5\n1 (50.00%)\n2.5\n1 (50.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\ty\n1\t1,5\t10\n2\t2,5\t20",
+      "screenshot": "report-assets/screenshots/case-07-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-07-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 0
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "CSV phân cách chấm phẩy: x=1,5 và 2,5.",
+      "expected": "Dấu phẩy thập phân cho sum=4.00, mean=2.00.",
+      "rationale": "Tách cột và phân tích số là hai bước khác nhau; tùy chọn decimal phải được phản ánh trong worker.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 8,
+      "name": "Giá trị thiếu: báo lỗi rồi phục hồi",
+      "action": "Nhập cột x có ô trống; tính để nhận lỗi; chọn Bỏ qua rồi tính lại.",
+      "started": "2026-10-31T09:31:29.191Z",
+      "durationMs": 1090,
+      "status": "PASS",
+      "detail": {
+        "rejected": "INVALID_CELLS: Invalid numerical cells — Hàng dữ liệu 2, cột 1: MISSING_VALUE",
+        "recovered": "Tổng 3 hàng • Được chọn 3 • Hợp lệ 2 • Thiếu 1 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 5.2 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n2\nTổng\n=\n4.00\nTrung bình\n=\n2.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n3.00\nTrung vị\n=\n2.00\nPhương sai tổng thể\n=\n1.00\nPhương sai mẫu\n=\n2.00\nĐộ lệch chuẩn tổng thể\n=\n1.00\nĐộ lệch chuẩn mẫu\n≈\n1.41\nTần suất\n1\n1 (50.00%)\n3\n1 (50.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\ty\n1\t1\t5\n3\t3\t9"
+      },
+      "screenshot": "report-assets/screenshots/case-08-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-08-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 0
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "x=1, ô thiếu, 3; Y phụ không dùng.",
+      "expected": "Reject báo MISSING_VALUE; skip cho n=2, sum=4 và mean=2.",
+      "rationale": "Cần quan sát cả lỗi lẫn phục hồi. Ô trống không được tự trở thành số 0 để có kết quả trông hợp lệ.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 9,
+      "name": "Làm tròn về chữ số chẵn",
+      "action": "Nhập 1.005 và 1.015 ở hai lần riêng; hiển thị 2 chữ số phải ra 1.00 và 1.02.",
+      "started": "2026-10-31T09:31:30.295Z",
+      "durationMs": 1648,
+      "status": "PASS",
+      "detail": {
+        "first": "Trung bình\n≈\n1.00",
+        "second": "Trung bình\n≈\n1.02"
+      },
+      "screenshot": "report-assets/screenshots/case-09-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-09-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 28
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "Hai lần nhập độc lập: x=1.005 và x=1.015, digits=2.",
+      "expected": "Lần thứ nhất mean=1.00, lần thứ hai mean=1.02.",
+      "rationale": "Quy tắc làm tròn khi chính giữa là về chữ số chẵn. Kiểm tra cả hai hướng giúp phát hiện việc luôn làm tròn lên.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 10,
+      "name": "Số nguyên vượt Number an toàn",
+      "action": "Nhập 9007199254740993 và 9007199254740992; tính và sắp xếp tăng, kiểm tra tổng chính xác.",
+      "started": "2026-10-31T09:31:31.966Z",
+      "durationMs": 1069,
+      "status": "PASS",
+      "detail": {
+        "sum": "Tổng\n=\n18014398509481985.00",
+        "first": "2\t9007199254740992"
+      },
+      "screenshot": "report-assets/screenshots/case-10-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-10-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 28
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "9007199254740993 và 9007199254740992.",
+      "expected": "Tổng=18014398509481985.00; số nhỏ hơn xuất hiện đầu khi sắp tăng.",
+      "rationale": "Hai số vượt vùng nguyên an toàn của Number; kiểm tra phép cộng và sắp xếp có giữ khác biệt một đơn vị.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 11,
+      "name": "Chặn số chữ số ngoài giới hạn",
+      "action": "Nhập 51 vào Chữ số Pro; thử Tính toán; phải chặn, đánh dấu kết quả cũ; sau đó trả về 2.",
+      "started": "2026-10-31T09:31:33.066Z",
+      "durationMs": 948,
+      "status": "PASS",
+      "detail": {
+        "rejected": "Chữ số Pro phải là số nguyên từ 0 đến 50.",
+        "recovered": "Đã tính xong."
+      },
+      "screenshot": "report-assets/screenshots/case-11-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-11-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 118
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "Kết quả hiện có rồi thay digits thành 51.",
+      "expected": "Từ chối số chữ số ngoài 0–50; kết quả cũ bị đánh dấu stale; trả về 2 thì tính lại được.",
+      "rationale": "Validation phải chặn công việc sai cấu hình và không để người dùng nhầm kết quả cũ với thiết lập mới.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 12,
+      "name": "Chuỗi giống HTML không được thực thi",
+      "action": "Nhập nhãn <img src=x onerror=...>; kiểm tra bảng hiển thị nguyên văn và không tạo thẻ img.",
+      "started": "2026-10-31T09:31:34.042Z",
+      "durationMs": 1146,
+      "status": "PASS",
+      "detail": {
+        "noInjectedElement": true,
+        "mean": "Trung bình\n=\n3.00"
+      },
+      "screenshot": "report-assets/screenshots/case-12-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-12-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 118
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "Nhãn tổng hợp giống thẻ img có onerror; value=2,4.",
+      "expected": "Nhãn hiển thị như văn bản; không có phần tử img phát sinh; handler không chạy; mean=3.",
+      "rationale": "Đây là một mẫu kiểm tra chèn HTML trong dữ liệu bảng. Một mẫu đạt không thay thế kiểm toán mọi bề mặt XSS.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 13,
+      "name": "CSV lỗi không thay dữ liệu đang làm",
+      "action": "Dán hàng thừa cột → Nhập nội dung; đối chiếu bảng trước và sau lỗi.",
+      "started": "2026-10-31T09:31:35.222Z",
+      "durationMs": 788,
+      "status": "PASS",
+      "detail": {
+        "message": "INVALID_ROW: Row has too many fields — Dòng CSV 2, cột 3: INVALID_ROW",
+        "preserved": true
+      },
+      "screenshot": "report-assets/screenshots/case-13-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-13-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 118
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "INVALID_ROW: Row has too many fields — Dòng CSV 2, cột 3: INVALID_ROW",
+      "fixture": "CSV header a,b nhưng hàng dữ liệu có 3 trường.",
+      "expected": "Báo INVALID_ROW; bảng đang làm giữ nguyên.",
+      "rationale": "Giao dịch nhập cần thất bại toàn bộ với dữ liệu sai, không đổi một phần bảng hoặc xóa kết quả công việc trước.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 14,
+      "name": "Xuất CSV an toàn và sao lưu JSON",
+      "action": "Nhập ô =1+2; tải CSV và JSON; đối chiếu CSV thêm nháy, JSON vẫn giữ nguyên dữ liệu.",
+      "started": "2026-10-31T09:31:36.034Z",
+      "durationMs": 1486,
+      "status": "PASS",
+      "detail": {
+        "csv": "label,value\r\n'=1+2,1\r\nsafe,2",
+        "jsonFirstCell": "=1+2"
+      },
+      "screenshot": "report-assets/screenshots/case-14-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-14-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 118
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã chuẩn bị JSON; hãy hoàn tất và kiểm tra việc lưu tệp.",
+      "fixture": "label có chuỗi =1+2; value=1,2.",
+      "expected": "CSV có dấu nháy phòng công thức; JSON vẫn giữ chuỗi nguyên bản =1+2.",
+      "rationale": "Xuất an toàn có thể thay biểu diễn cho bảng tính. Vì vậy phải đối chiếu cả file CSV thực tải và file JSON bảo toàn dữ liệu.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 15,
+      "name": "Khôi phục bản sao lưu",
+      "action": "Nạp dữ liệu mẫu thay bảng, chọn file synthetic-backup.json để khôi phục; kiểm tra ô =1+2.",
+      "started": "2026-10-31T09:31:37.535Z",
+      "durationMs": 558,
+      "status": "PASS",
+      "detail": "Dữ liệu dán — 2 hàng, 2 cột\nHàng dữ liệu\tlabel\tvalue\n1\t=1+2\t1\n2\tsafe\t2",
+      "screenshot": "report-assets/screenshots/case-15-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-15-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 118
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã nhập dữ liệu hợp lệ.",
+      "fixture": "synthetic-backup.json vừa xuất; sau đó nạp mẫu để thay bảng.",
+      "expected": "Khôi phục file đưa bảng =1+2 trở lại đúng.",
+      "rationale": "Chỉ việc có nút hoặc tải file không chứng minh phục hồi; cần thay dữ liệu rồi nhập lại bản sao lưu thật.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 16,
+      "name": "Lưu, tải lại trang và mở dự án",
+      "action": "Bấm Lưu dự án → reload → Mở dự án; kiểm tra dữ liệu và trạng thái đã lưu.",
+      "started": "2026-10-31T09:31:38.132Z",
+      "durationMs": 1662,
+      "status": "PASS",
+      "detail": "Đã mở dự án.",
+      "screenshot": "report-assets/screenshots/case-16-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-16-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 118
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã mở dự án.",
+      "fixture": "Dự án tổng hợp được lưu trong profile thử riêng.",
+      "expected": "Reload rồi mở lại cho dữ liệu đã lưu và trạng thái Đã lưu.",
+      "rationale": "Luồng này quan sát persistence thật của trình duyệt, tách khỏi dữ liệu chỉ còn trong biến bộ nhớ.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 17,
+      "name": "Giao diện và giảm chuyển động được nhớ",
+      "action": "Chuyển tối và giảm chuyển động → reload; đối chiếu class và aria-pressed.",
+      "started": "2026-10-31T09:31:39.826Z",
+      "durationMs": 824,
+      "status": "PASS",
+      "detail": {
+        "bodyClass": "dark reduce-motion",
+        "themePressed": "true",
+        "motionPressed": "true"
+      },
+      "screenshot": "report-assets/screenshots/case-17-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-17-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 726
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Bắt đầu bằng dữ liệu mẫu hoặc nhập bảng của bạn.",
+      "fixture": "Bật tối và giảm chuyển động trong profile tổng hợp.",
+      "expected": "Class giao diện và aria-pressed giữ nguyên sau reload.",
+      "rationale": "So sánh tập class theo ý nghĩa, không xem thứ tự chuỗi class là trạng thái giao diện khác nhau.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 18,
+      "name": "Hủy công việc không ghi kết quả muộn",
+      "action": "Nạp mẫu và tính; kích hoạt Tính toán rồi Hủy trong cùng nhịp sự kiện; chờ để kiểm tra trạng thái.",
+      "started": "2026-10-31T09:31:40.666Z",
+      "durationMs": 797,
+      "status": "PASS",
+      "detail": {
+        "status": "Đã hủy tính toán; kết quả trước đó được giữ lại.",
+        "cancelDisabled": true
+      },
+      "screenshot": "report-assets/screenshots/case-18-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-18-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 0
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã hủy tính toán; kết quả trước đó được giữ lại.",
+      "fixture": "Tính mẫu trước, sau đó bấm tính/hủy cùng nhịp sự kiện.",
+      "expected": "Trạng thái Đã hủy; tác vụ cũ không hoàn thành muộn; kết quả trước không bị thay.",
+      "rationale": "Kích hoạt có kiểm soát hai nút trong cùng một nhịp để kiểm tra race; không khẳng định đây là thao tác tay đã đo trên người dùng thật.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": true
+    },
+    {
+      "index": 19,
+      "name": "50.000 hàng qua nhập file và Web Worker",
+      "action": "Tạo CSV tổng hợp x=1..50000, chọn file, bấm Tính toán; đối chiếu tổng 1250025000 và trung bình 25000.5.",
+      "started": "2026-10-31T09:31:41.475Z",
+      "durationMs": 1378,
+      "status": "PASS",
+      "detail": {
+        "rows": 50000,
+        "bytes": 288895,
+        "importedMs": 198,
+        "calculationJourneyMs": 394,
+        "disclaimer": "Single synthetic measurement on desktop Edge; includes UI/automation overhead, not a performance guarantee."
+      },
+      "screenshot": "report-assets/screenshots/case-19-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-19-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 27
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "File tổng hợp x=1..50000, tổng cộng 288895 byte.",
+      "expected": "n=50000; sum=1250025000; mean=25000.50.",
+      "rationale": "Oracle tổng dãy là n(n+1)/2. Đo thời gian gồm cả UI và automation, nên chỉ ghi như một quan sát trên máy này.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 20,
+      "name": "In chỉ được gọi với kết quả mới",
+      "action": "Chặn cửa sổ print bằng stub kiểm thử; kiểm tra in mới được gọi, sau đổi chữ số phải chặn in cũ.",
+      "started": "2026-10-31T09:31:42.878Z",
+      "durationMs": 1212,
+      "status": "PASS",
+      "detail": {
+        "calls": 1,
+        "blockedStale": "Kết quả chưa cập nhật; hãy tính lại trước khi in.",
+        "scope": "Only print invocation and freshness guard; physical printing not tested."
+      },
+      "screenshot": "report-assets/screenshots/case-20-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-20-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 0
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/",
+      "visibleStatus": "Kết quả chưa cập nhật; hãy tính lại trước khi in.",
+      "fixture": "Kết quả mới, rồi đổi digits để làm kết quả stale.",
+      "expected": "Lời gọi print được thực hiện một lần cho kết quả mới; bị chặn sau thay đổi.",
+      "rationale": "window.print được thay bằng bộ đếm trong context thử để không mở hộp thoại hệ thống. Không chứng minh in vật lý hoặc PDF đúng trang.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": true
+    },
+    {
+      "index": 21,
+      "name": "Màn hình điện thoại 390 px và điều hướng kết quả",
+      "action": "Đổi viewport 390×844, nạp mẫu và tính; bấm Xem kết quả; kiểm tra không tràn ngang.",
+      "started": "2026-10-31T09:31:44.121Z",
+      "durationMs": 808,
+      "status": "PASS",
+      "detail": {
+        "width": 390,
+        "scrollWidth": 390,
+        "resultTop": 16.25
+      },
+      "screenshot": "report-assets/screenshots/case-21-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-21-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 1731
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/#results",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "Viewport 390×844; mẫu chạy Phân phối.",
+      "expected": "Không tràn ngang; Xem kết quả đưa phần kết quả tới gần đầu viewport.",
+      "rationale": "Đây là bố cục mobile được đo bằng trình duyệt máy tính. Không gọi là đã chạy trên iPhone hay Android vật lý.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 22,
+      "name": "Màn hình nhỏ 320 px, thao tác bàn phím",
+      "action": "Đổi viewport 320×844; dùng Enter mở Thiết lập nâng cao, rồi kiểm tra độ rộng trang.",
+      "started": "2026-10-31T09:31:44.944Z",
+      "durationMs": 402,
+      "status": "PASS",
+      "detail": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "keyboardOpened": true
+      },
+      "screenshot": "report-assets/screenshots/case-22-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-22-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 1334
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/#results",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "Viewport 320×844; dùng phím Enter ở summary.",
+      "expected": "Advanced mở bằng bàn phím và độ rộng trang không vượt viewport.",
+      "rationale": "Kiểm tra tương tác bàn phím và bố cục nhỏ; chưa bao quát screen reader hoặc mọi trạng thái focus của toàn ứng dụng.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 23,
+      "name": "Không có lỗi runtime, không có tải dữ liệu lên",
+      "action": "Kiểm tra pageerror/console và các request của phiên thử; dữ liệu nhập đều tổng hợp.",
+      "started": "2026-10-31T09:31:45.358Z",
+      "durationMs": 280,
+      "status": "PASS",
+      "detail": {
+        "errors": [],
+        "requests": 96,
+        "foreign": [],
+        "uploads": [],
+        "scope": "Observed main-page requests in this synthetic session; not a complete security audit."
+      },
+      "screenshot": "report-assets/screenshots/case-23-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-23-viewport.png",
+      "scrollAtCapture": {
+        "x": 0,
+        "y": 1334
+      },
+      "url": "https://caychua43-hub.github.io/statdesk-pro-web/#results",
+      "visibleStatus": "Đã tính xong.",
+      "fixture": "Các request của phiên tổng hợp, pageerror và console.",
+      "expected": "Không thấy lỗi runtime; không thấy upload hoặc request ra origin khác trong phạm vi quan sát.",
+      "rationale": "Kết luận giới hạn ở request trang chính của phiên này, không suy rộng thành bảo đảm không thể rò dữ liệu.",
+      "scope": "Phiên Edge cô lập; dữ liệu tổng hợp; bản public thực tế",
+      "simulation": false
+    },
+    {
+      "index": 24,
+      "name": "CSV BOM, tab, CRLF và ô nhiều dòng",
+      "action": "Chọn file tổng hợp có BOM/tab/CRLF và nhãn trích dẫn; chọn cột x rồi tính.",
+      "fixture": "label<TAB>x; nhãn \"dòng 1\\ndòng \"\"2\"\"\" có giá trị 1; normal có giá trị 2",
+      "expected": "2 hàng; nhãn giữ xuống dòng/dấu nháy; tổng 3; trung bình 1.50.",
+      "rationale": "Parser phải nhận định dạng thực tế và giữ dữ liệu văn bản nguyên vẹn trước khi tính.",
+      "simulation": false,
+      "started": "2026-10-31T09:39:33.163Z",
+      "status": "PASS",
+      "detail": {
+        "label": "dòng 1\ndòng \"2\"",
+        "sum": "=\n3.00",
+        "mean": "=\n1.50"
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 2 hàng • Được chọn 2 • Hợp lệ 2 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 4.1 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n2\nTổng\n=\n3.00\nTrung bình\n=\n1.50\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n2.00\nTrung vị\n=\n1.50\nPhương sai tổng thể\n=\n0.25\nPhương sai mẫu\n=\n0.50\nĐộ lệch chuẩn tổng thể\n=\n0.50\nĐộ lệch chuẩn mẫu\n≈\n0.71\nTần suất\n1\n1 (50.00%)\n2\n1 (50.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tlabel\tx\n1\tdòng 1 dòng \"2\"\t1\n2\tnormal\t2",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-24-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-24-viewport.png",
+      "durationMs": 2389,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 25,
+      "name": "Chọn lại cùng một file",
+      "action": "Nhập một file → thay bằng dữ liệu mẫu → chọn lại đúng file ban đầu.",
+      "fixture": "synthetic-repeat.csv: x\\n7\\n9",
+      "expected": "Hai lần nhập đều có hiệu lực; cuối cùng 2 hàng, tổng 16.",
+      "rationale": "Input file cần được đặt lại sau mỗi lần đọc để cùng tên file vẫn phát sinh sự kiện.",
+      "simulation": false,
+      "started": "2026-10-31T09:39:35.557Z",
+      "status": "PASS",
+      "detail": {
+        "count": "=\n2",
+        "sum": "=\n16.00"
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 2 hàng • Được chọn 2 • Hợp lệ 2 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 8.3 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n2\nTổng\n=\n16.00\nTrung bình\n=\n8.00\nNhỏ nhất\n=\n7.00\nLớn nhất\n=\n9.00\nTrung vị\n=\n8.00\nPhương sai tổng thể\n=\n1.00\nPhương sai mẫu\n=\n2.00\nĐộ lệch chuẩn tổng thể\n=\n1.00\nĐộ lệch chuẩn mẫu\n≈\n1.41\nTần suất\n7\n1 (50.00%)\n9\n1 (50.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\n1\t7\n2\t9",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-25-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-25-viewport.png",
+      "durationMs": 2360,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 26,
+      "name": "CSV chỉ có tiêu đề",
+      "action": "Nhập tiêu đề x không có quan sát → Tính toán.",
+      "fixture": "x\\n",
+      "expected": "Tổng/được chọn/hợp lệ đều 0; count=0; mean và variance không xác định.",
+      "rationale": "Không được tạo quan sát giả hoặc trình bày NaN/Infinity như số liệu.",
+      "simulation": false,
+      "started": "2026-10-31T09:39:37.919Z",
+      "status": "PASS",
+      "detail": "Tổng 0 hàng • Được chọn 0 • Hợp lệ 0 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 3.6 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n0\nTổng\nKhông xác định\nTrung bình\nKhông xác định\nNhỏ nhất\nKhông xác định\nLớn nhất\nKhông xác định\nTrung vị\nKhông xác định\nPhương sai tổng thể\nKhông xác định\nPhương sai mẫu\nKhông xác định\nĐộ lệch chuẩn tổng thể\nKhông xác định\nĐộ lệch chuẩn mẫu\nKhông xác định\nTần suất\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx",
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 0 hàng • Được chọn 0 • Hợp lệ 0 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 3.6 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n0\nTổng\nKhông xác định\nTrung bình\nKhông xác định\nNhỏ nhất\nKhông xác định\nLớn nhất\nKhông xác định\nTrung vị\nKhông xác định\nPhương sai tổng thể\nKhông xác định\nPhương sai mẫu\nKhông xác định\nĐộ lệch chuẩn tổng thể\nKhông xác định\nĐộ lệch chuẩn mẫu\nKhông xác định\nTần suất\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-26-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-26-viewport.png",
+      "durationMs": 2399,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 27,
+      "name": "Toàn bộ quan sát đều thiếu",
+      "action": "Nhập 2 ô trống, chọn Bỏ qua, tính.",
+      "fixture": "x\\n\\n\\n",
+      "expected": "2 hàng; hợp lệ=0; thiếu=2; mean không xác định.",
+      "rationale": "Chính sách bỏ thiếu loại quan sát khỏi phép tính, không chuyển ô rỗng thành số 0.",
+      "simulation": false,
+      "started": "2026-10-31T09:39:40.319Z",
+      "status": "PASS",
+      "detail": "Tổng 2 hàng • Được chọn 2 • Hợp lệ 0 • Thiếu 2 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 5.8 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n0\nTổng\nKhông xác định\nTrung bình\nKhông xác định\nNhỏ nhất\nKhông xác định\nLớn nhất\nKhông xác định\nTrung vị\nKhông xác định\nPhương sai tổng thể\nKhông xác định\nPhương sai mẫu\nKhông xác định\nĐộ lệch chuẩn tổng thể\nKhông xác định\nĐộ lệch chuẩn mẫu\nKhông xác định\nTần suất\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx",
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 2 hàng • Được chọn 2 • Hợp lệ 0 • Thiếu 2 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 5.8 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n0\nTổng\nKhông xác định\nTrung bình\nKhông xác định\nNhỏ nhất\nKhông xác định\nLớn nhất\nKhông xác định\nTrung vị\nKhông xác định\nPhương sai tổng thể\nKhông xác định\nPhương sai mẫu\nKhông xác định\nĐộ lệch chuẩn tổng thể\nKhông xác định\nĐộ lệch chuẩn mẫu\nKhông xác định\nTần suất\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-27-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-27-viewport.png",
+      "durationMs": 2725,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 28,
+      "name": "Một quan sát và phương sai mẫu",
+      "action": "Nhập 5 rồi đọc các thẻ số học.",
+      "fixture": "x\\n5",
+      "expected": "Tổng/mean=5; phương sai/SD tổng thể=0; phương sai/SD mẫu không xác định.",
+      "rationale": "Phép chia n−1 không có nghĩa khi n=1; thông báo phải phản ánh điều kiện này.",
+      "simulation": false,
+      "started": "2026-10-31T09:39:43.048Z",
+      "status": "PASS",
+      "detail": {
+        "sum": "=\n5.00",
+        "mean": "=\n5.00",
+        "populationVariance": "=\n0.00",
+        "populationSd": "=\n0.00",
+        "sampleVariance": "Không xác định",
+        "sampleSd": "Không xác định"
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 1 hàng • Được chọn 1 • Hợp lệ 1 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 17.0 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n1\nTổng\n=\n5.00\nTrung bình\n=\n5.00\nNhỏ nhất\n=\n5.00\nLớn nhất\n=\n5.00\nTrung vị\n=\n5.00\nPhương sai tổng thể\n=\n0.00\nPhương sai mẫu\nKhông xác định\nĐộ lệch chuẩn tổng thể\n=\n0.00\nĐộ lệch chuẩn mẫu\nKhông xác định\nTần suất\n5\n1 (100.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\n1\t5",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-28-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-28-viewport.png",
+      "durationMs": 2735,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 29,
+      "name": "Hồi quy có hệ số âm",
+      "action": "Nhập y=5−2x, chọn Y và Mối quan hệ.",
+      "fixture": "x,y\\n1,3\\n2,1\\n3,-1",
+      "expected": "Slope −2; intercept 5; r=−1; R²=1.",
+      "rationale": "Kiểm tra dấu tương quan và hệ số góc; tương quan âm hoàn hảo vẫn có R² bằng 1.",
+      "simulation": false,
+      "started": "2026-10-31T09:39:45.787Z",
+      "status": "PASS",
+      "detail": {
+        "slope": "=\n-2.00",
+        "intercept": "=\n5.00",
+        "r": "=\n-1.00",
+        "r2": "=\n1.00"
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 3 hàng • Được chọn 3 • Hợp lệ 3 • Thiếu 0 • Loại bởi bộ lọc 0\n\nTương quan và hồi quy tuyến tính • 10.1 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n3\nTổng\n=\n6.00\nTrung bình\n=\n2.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n3.00\nTrung vị\n=\n2.00\nPhương sai tổng thể\n≈\n0.67\nPhương sai mẫu\n=\n1.00\nĐộ lệch chuẩn tổng thể\n≈\n0.82\nĐộ lệch chuẩn mẫu\n=\n1.00\nTrung bình X\n=\n2.00\nTrung bình Y\n=\n1.00\nHệ số góc\n=\n-2.00\nHệ số chặn\n=\n5.00\nTương quan Pearson r\n=\n-1.00\nR²\n=\n1.00\n\nChỉ mô tả quan hệ tuyến tính trong các cặp hợp lệ; không khẳng định nhân quả, p-value hoặc ngoại suy.\n\nTần suất\n1\n1 (33.33%)\n2\n1 (33.33%)\n3\n1 (33.33%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\ty\n1\t1\t3\n2\t2\t1\n3\t3\t-1",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-29-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-29-viewport.png",
+      "durationMs": 3234,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 30,
+      "name": "X không thay đổi",
+      "action": "Chọn hồi quy với cột X hằng.",
+      "fixture": "x,y\\n2,1\\n2,3",
+      "expected": "Có giải thích X không thay đổi; slope/intercept/r/R² không xác định.",
+      "rationale": "Mẫu số hồi quy bằng 0 phải được xử lý thành trạng thái có lý do.",
+      "simulation": false,
+      "started": "2026-10-31T09:39:49.024Z",
+      "status": "PASS",
+      "detail": "Tổng 2 hàng • Được chọn 2 • Hợp lệ 2 • Thiếu 0 • Loại bởi bộ lọc 0\n\nTương quan và hồi quy tuyến tính • 6.9 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n2\nTổng\n=\n4.00\nTrung bình\n=\n2.00\nNhỏ nhất\n=\n2.00\nLớn nhất\n=\n2.00\nTrung vị\n=\n2.00\nPhương sai tổng thể\n=\n0.00\nPhương sai mẫu\n=\n0.00\nĐộ lệch chuẩn tổng thể\n=\n0.00\nĐộ lệch chuẩn mẫu\n=\n0.00\nTrung bình X\n=\n2.00\nTrung bình Y\n=\n2.00\nHệ số góc\nKhông xác định\nHệ số chặn\nKhông xác định\nTương quan Pearson r\nKhông xác định\nR²\nKhông xác định\nMốt\n= 2\n\nKhông xác định: Cột X không thay đổi nên không xác định hệ số góc và tương quan.\n\nChỉ mô tả quan hệ tuyến tính trong các cặp hợp lệ; không khẳng định nhân quả, p-value hoặc ngoại suy.\n\nTần suất\n2\n2 (100.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\ty\n1\t2\t1\n2\t2\t3",
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 2 hàng • Được chọn 2 • Hợp lệ 2 • Thiếu 0 • Loại bởi bộ lọc 0\n\nTương quan và hồi quy tuyến tính • 6.9 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n2\nTổng\n=\n4.00\nTrung bình\n=\n2.00\nNhỏ nhất\n=\n2.00\nLớn nhất\n=\n2.00\nTrung vị\n=\n2.00\nPhương sai tổng thể\n=\n0.00\nPhương sai mẫu\n=\n0.00\nĐộ lệch chuẩn tổng thể\n=\n0.00\nĐộ lệch chuẩn mẫu\n=\n0.00\nTrung bình X\n=\n2.00\nTrung bình Y\n=\n2.00\nHệ số góc\nKhông xác định\nHệ số chặn\nKhông xác định\nTương quan Pearson r\nKhông xác định\nR²\nKhông xác định\nMốt\n= 2\n\nKhông xác định: Cột X không thay đổi nên không xác định hệ số góc và tương quan.\n\nChỉ mô tả quan hệ tuyến tính trong các cặp hợp lệ; không khẳng định nhân quả, p-value hoặc ngoại suy.\n\nTần suất\n2\n2 (100.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\ty\n1\t2\t1\n2\t2\t3",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-30-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-30-viewport.png",
+      "durationMs": 3084,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 31,
+      "name": "Cả X và Y đều không thay đổi",
+      "action": "Tính hồi quy với hai cặp giống nhau.",
+      "fixture": "x,y\\n2,5\\n2,5",
+      "expected": "Giải thích cả hai cột hằng; không tự gán r=1.",
+      "rationale": "Hai cột hằng không tạo tương quan xác định dù các điểm trùng nhau.",
+      "simulation": false,
+      "started": "2026-10-31T09:39:52.110Z",
+      "status": "PASS",
+      "detail": "Tổng 2 hàng • Được chọn 2 • Hợp lệ 2 • Thiếu 0 • Loại bởi bộ lọc 0\n\nTương quan và hồi quy tuyến tính • 9.1 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n2\nTổng\n=\n4.00\nTrung bình\n=\n2.00\nNhỏ nhất\n=\n2.00\nLớn nhất\n=\n2.00\nTrung vị\n=\n2.00\nPhương sai tổng thể\n=\n0.00\nPhương sai mẫu\n=\n0.00\nĐộ lệch chuẩn tổng thể\n=\n0.00\nĐộ lệch chuẩn mẫu\n=\n0.00\nTrung bình X\n=\n2.00\nTrung bình Y\n=\n5.00\nHệ số góc\nKhông xác định\nHệ số chặn\nKhông xác định\nTương quan Pearson r\nKhông xác định\nR²\nKhông xác định\nMốt\n= 2\n\nKhông xác định: Cả X và Y không thay đổi nên không xác định hồi quy và tương quan.\n\nChỉ mô tả quan hệ tuyến tính trong các cặp hợp lệ; không khẳng định nhân quả, p-value hoặc ngoại suy.\n\nTần suất\n2\n2 (100.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\ty\n1\t2\t5\n2\t2\t5",
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 2 hàng • Được chọn 2 • Hợp lệ 2 • Thiếu 0 • Loại bởi bộ lọc 0\n\nTương quan và hồi quy tuyến tính • 9.1 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n2\nTổng\n=\n4.00\nTrung bình\n=\n2.00\nNhỏ nhất\n=\n2.00\nLớn nhất\n=\n2.00\nTrung vị\n=\n2.00\nPhương sai tổng thể\n=\n0.00\nPhương sai mẫu\n=\n0.00\nĐộ lệch chuẩn tổng thể\n=\n0.00\nĐộ lệch chuẩn mẫu\n=\n0.00\nTrung bình X\n=\n2.00\nTrung bình Y\n=\n5.00\nHệ số góc\nKhông xác định\nHệ số chặn\nKhông xác định\nTương quan Pearson r\nKhông xác định\nR²\nKhông xác định\nMốt\n= 2\n\nKhông xác định: Cả X và Y không thay đổi nên không xác định hồi quy và tương quan.\n\nChỉ mô tả quan hệ tuyến tính trong các cặp hợp lệ; không khẳng định nhân quả, p-value hoặc ngoại suy.\n\nTần suất\n2\n2 (100.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\ty\n1\t2\t5\n2\t2\t5",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-31-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-31-viewport.png",
+      "durationMs": 2594,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 32,
+      "name": "X làm chính cột Y",
+      "action": "Chọn cùng một cột làm X và Y.",
+      "fixture": "x\\n1\\n2\\n3",
+      "expected": "Slope=1; intercept=0; r=R²=1.",
+      "rationale": "Đường y=x là oracle đơn giản để kiểm tra lựa chọn cặp cùng cột.",
+      "simulation": false,
+      "started": "2026-10-31T09:39:54.706Z",
+      "status": "PASS",
+      "detail": {
+        "slope": "=\n1.00",
+        "intercept": "=\n0.00",
+        "r": "=\n1.00",
+        "r2": "=\n1.00"
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 3 hàng • Được chọn 3 • Hợp lệ 3 • Thiếu 0 • Loại bởi bộ lọc 0\n\nTương quan và hồi quy tuyến tính • 11.1 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n3\nTổng\n=\n6.00\nTrung bình\n=\n2.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n3.00\nTrung vị\n=\n2.00\nPhương sai tổng thể\n≈\n0.67\nPhương sai mẫu\n=\n1.00\nĐộ lệch chuẩn tổng thể\n≈\n0.82\nĐộ lệch chuẩn mẫu\n=\n1.00\nTrung bình X\n=\n2.00\nTrung bình Y\n=\n2.00\nHệ số góc\n=\n1.00\nHệ số chặn\n=\n0.00\nTương quan Pearson r\n=\n1.00\nR²\n=\n1.00\n\nChỉ mô tả quan hệ tuyến tính trong các cặp hợp lệ; không khẳng định nhân quả, p-value hoặc ngoại suy.\n\nTần suất\n1\n1 (33.33%)\n2\n1 (33.33%)\n3\n1 (33.33%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\n1\t1\n2\t2\n3\t3",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-32-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-32-viewport.png",
+      "durationMs": 3004,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 33,
+      "name": "Thiếu Y không làm lệch cặp",
+      "action": "Chọn Bỏ qua trên dữ liệu thiếu Y ở hàng giữa rồi tính.",
+      "fixture": "x,y\\n1,5\\n2,\\n3,9",
+      "expected": "Hợp lệ=2; thiếu=1; slope=2/intercept=3; hàng nguồn 1 và 3.",
+      "rationale": "Cần bỏ cả cặp có ô thiếu, không dịch riêng mảng Y khiến X/Y ghép sai.",
+      "simulation": false,
+      "started": "2026-10-31T09:39:57.712Z",
+      "status": "PASS",
+      "detail": {
+        "rows": [
+          "1",
+          "3"
+        ],
+        "result": "Tổng 3 hàng • Được chọn 3 • Hợp lệ 2 • Thiếu 1 • Loại bởi bộ lọc 0\n\nTương quan và hồi quy tuyến tính • 4.6 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n2\nTổng\n=\n4.00\nTrung bình\n=\n2.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n3.00\nTrung vị\n=\n2.00\nPhương sai tổng thể\n=\n1.00\nPhương sai mẫu\n=\n2.00\nĐộ lệch chuẩn tổng thể\n=\n1.00\nĐộ lệch chuẩn mẫu\n≈\n1.41\nTrung bình X\n=\n2.00\nTrung bình Y\n=\n7.00\nHệ số góc\n=\n2.00\nHệ số chặn\n=\n3.00\nTương quan Pearson r\n=\n1.00\nR²\n=\n1.00\n\nChỉ mô tả quan hệ tuyến tính trong các cặp hợp lệ; không khẳng định nhân quả, p-value hoặc ngoại suy.\n\nTần suất\n1\n1 (50.00%)\n3\n1 (50.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\ty\n1\t1\t5\n3\t3\t9"
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 3 hàng • Được chọn 3 • Hợp lệ 2 • Thiếu 1 • Loại bởi bộ lọc 0\n\nTương quan và hồi quy tuyến tính • 4.6 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n2\nTổng\n=\n4.00\nTrung bình\n=\n2.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n3.00\nTrung vị\n=\n2.00\nPhương sai tổng thể\n=\n1.00\nPhương sai mẫu\n=\n2.00\nĐộ lệch chuẩn tổng thể\n=\n1.00\nĐộ lệch chuẩn mẫu\n≈\n1.41\nTrung bình X\n=\n2.00\nTrung bình Y\n=\n7.00\nHệ số góc\n=\n2.00\nHệ số chặn\n=\n3.00\nTương quan Pearson r\n=\n1.00\nR²\n=\n1.00\n\nChỉ mô tả quan hệ tuyến tính trong các cặp hợp lệ; không khẳng định nhân quả, p-value hoặc ngoại suy.\n\nTần suất\n1\n1 (50.00%)\n3\n1 (50.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\ty\n1\t1\t5\n3\t3\t9",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-33-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-33-viewport.png",
+      "durationMs": 2996,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 34,
+      "name": "Chưa chọn Y thì không chạy",
+      "action": "Nhập hai cột, chọn Mối quan hệ nhưng để cột Y trống; bấm tính.",
+      "fixture": "x,y\\n1,3\\n2,5",
+      "expected": "Hướng dẫn chọn Y; cancel disabled; không có aria-busy=true.",
+      "rationale": "Validation đầu vào phải chặn tác vụ chưa đủ cấu hình và không giả báo hoàn tất.",
+      "simulation": false,
+      "started": "2026-10-31T09:40:00.711Z",
+      "status": "PASS",
+      "detail": "Hãy chọn cột Y.",
+      "visibleStatus": "Hãy chọn cột Y.",
+      "observedResult": "Dữ liệu đã thay đổi. Nhấn Tính toán để xem kết quả.",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-34-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-34-viewport.png",
+      "durationMs": 3014,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 35,
+      "name": "IQR bằng 0 và ngoại lệ",
+      "action": "Nhập 1,1,1,1,2; chạy Phân phối.",
+      "fixture": "x\\n1\\n1\\n1\\n1\\n2",
+      "expected": "Q1=Q3=1; IQR=MAD=0; fences=1; ngoại lệ hàng5; n vẫn5.",
+      "rationale": "IQR bằng 0 vẫn dùng đúng ngưỡng Tukey; đánh dấu không có nghĩa tự xóa dữ liệu.",
+      "simulation": false,
+      "started": "2026-10-31T09:40:03.731Z",
+      "status": "PASS",
+      "detail": "Tổng 5 hàng • Được chọn 5 • Hợp lệ 5 • Thiếu 0 • Loại bởi bộ lọc 0\n\nPhân phối và ngoại lệ tiềm năng • 7.9 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n5\nTổng\n=\n6.00\nTrung bình\n=\n1.20\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n2.00\nTrung vị\n=\n1.00\nPhương sai tổng thể\n=\n0.16\nPhương sai mẫu\n=\n0.20\nĐộ lệch chuẩn tổng thể\n=\n0.40\nĐộ lệch chuẩn mẫu\n≈\n0.45\nTứ phân vị thứ nhất (Q1)\n=\n1.00\nTứ phân vị thứ ba (Q3)\n=\n1.00\nKhoảng tứ phân vị\n=\n0.00\nMAD (không hiệu chỉnh)\n=\n0.00\nNgưỡng dưới Tukey\n=\n1.00\nNgưỡng trên Tukey\n=\n1.00\nMốt\n= 1\n\nTứ phân vị dùng nội suy tuyến tính Type 7: vị trí h = 1 + (n − 1)p với p = 0,25 hoặc 0,75. Các quy ước tứ phân vị khác có thể cho kết quả khác.\n\nĐiểm ngoại lệ tiềm năng: 1. Hàng dữ liệu: 5. Tối đa 200 hàng được hiển thị. Không tự xóa quan sát.\n\nMAD là trung vị độ lệch tuyệt đối chưa chuẩn hóa. Nhãn ngoại lệ tiềm năng không phải kiểm định và không xóa quan sát.\n\nTần suất\n1\n4 (80.00%)\n2\n1 (20.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\n1\t1\n2\t1\n3\t1\n4\t1\n5\t2",
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 5 hàng • Được chọn 5 • Hợp lệ 5 • Thiếu 0 • Loại bởi bộ lọc 0\n\nPhân phối và ngoại lệ tiềm năng • 7.9 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n5\nTổng\n=\n6.00\nTrung bình\n=\n1.20\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n2.00\nTrung vị\n=\n1.00\nPhương sai tổng thể\n=\n0.16\nPhương sai mẫu\n=\n0.20\nĐộ lệch chuẩn tổng thể\n=\n0.40\nĐộ lệch chuẩn mẫu\n≈\n0.45\nTứ phân vị thứ nhất (Q1)\n=\n1.00\nTứ phân vị thứ ba (Q3)\n=\n1.00\nKhoảng tứ phân vị\n=\n0.00\nMAD (không hiệu chỉnh)\n=\n0.00\nNgưỡng dưới Tukey\n=\n1.00\nNgưỡng trên Tukey\n=\n1.00\nMốt\n= 1\n\nTứ phân vị dùng nội suy tuyến tính Type 7: vị trí h = 1 + (n − 1)p với p = 0,25 hoặc 0,75. Các quy ước tứ phân vị khác có thể cho kết quả khác.\n\nĐiểm ngoại lệ tiềm năng: 1. Hàng dữ liệu: 5. Tối đa 200 hàng được hiển thị. Không tự xóa quan sát.\n\nMAD là trung vị độ lệch tuyệt đối chưa chuẩn hóa. Nhãn ngoại lệ tiềm năng không phải kiểm định và không xóa quan sát.\n\nTần suất\n1\n4 (80.00%)\n2\n1 (20.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\n1\t1\n2\t1\n3\t1\n4\t1\n5\t2",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-35-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-35-viewport.png",
+      "durationMs": 2994,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 36,
+      "name": "Ngoại lệ rõ và MAD",
+      "action": "Tính Phân phối của 1,2,3,4,100.",
+      "fixture": "x\\n1\\n2\\n3\\n4\\n100",
+      "expected": "Q1=2; Q3=4; IQR=2; median=3; MAD=1; fences −1/7; hàng5 ngoại lệ, n5.",
+      "rationale": "Đối chiếu Type7, độ lệch tuyệt đối và ngưỡng 1.5×IQR bằng tay.",
+      "simulation": false,
+      "started": "2026-10-31T09:40:06.728Z",
+      "status": "PASS",
+      "detail": "Tổng 5 hàng • Được chọn 5 • Hợp lệ 5 • Thiếu 0 • Loại bởi bộ lọc 0\n\nPhân phối và ngoại lệ tiềm năng • 6.0 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n5\nTổng\n=\n110.00\nTrung bình\n=\n22.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n100.00\nTrung vị\n=\n3.00\nPhương sai tổng thể\n=\n1522.00\nPhương sai mẫu\n=\n1902.50\nĐộ lệch chuẩn tổng thể\n≈\n39.01\nĐộ lệch chuẩn mẫu\n≈\n43.62\nTứ phân vị thứ nhất (Q1)\n=\n2.00\nTứ phân vị thứ ba (Q3)\n=\n4.00\nKhoảng tứ phân vị\n=\n2.00\nMAD (không hiệu chỉnh)\n=\n1.00\nNgưỡng dưới Tukey\n=\n-1.00\nNgưỡng trên Tukey\n=\n7.00\n\nTứ phân vị dùng nội suy tuyến tính Type 7: vị trí h = 1 + (n − 1)p với p = 0,25 hoặc 0,75. Các quy ước tứ phân vị khác có thể cho kết quả khác.\n\nĐiểm ngoại lệ tiềm năng: 1. Hàng dữ liệu: 5. Tối đa 200 hàng được hiển thị. Không tự xóa quan sát.\n\nMAD là trung vị độ lệch tuyệt đối chưa chuẩn hóa. Nhãn ngoại lệ tiềm năng không phải kiểm định và không xóa quan sát.\n\nTần suất\n1\n1 (20.00%)\n2\n1 (20.00%)\n3\n1 (20.00%)\n4\n1 (20.00%)\n100\n1 (20.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\n1\t1\n2\t2\n3\t3\n4\t4\n5\t100",
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 5 hàng • Được chọn 5 • Hợp lệ 5 • Thiếu 0 • Loại bởi bộ lọc 0\n\nPhân phối và ngoại lệ tiềm năng • 6.0 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n5\nTổng\n=\n110.00\nTrung bình\n=\n22.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n100.00\nTrung vị\n=\n3.00\nPhương sai tổng thể\n=\n1522.00\nPhương sai mẫu\n=\n1902.50\nĐộ lệch chuẩn tổng thể\n≈\n39.01\nĐộ lệch chuẩn mẫu\n≈\n43.62\nTứ phân vị thứ nhất (Q1)\n=\n2.00\nTứ phân vị thứ ba (Q3)\n=\n4.00\nKhoảng tứ phân vị\n=\n2.00\nMAD (không hiệu chỉnh)\n=\n1.00\nNgưỡng dưới Tukey\n=\n-1.00\nNgưỡng trên Tukey\n=\n7.00\n\nTứ phân vị dùng nội suy tuyến tính Type 7: vị trí h = 1 + (n − 1)p với p = 0,25 hoặc 0,75. Các quy ước tứ phân vị khác có thể cho kết quả khác.\n\nĐiểm ngoại lệ tiềm năng: 1. Hàng dữ liệu: 5. Tối đa 200 hàng được hiển thị. Không tự xóa quan sát.\n\nMAD là trung vị độ lệch tuyệt đối chưa chuẩn hóa. Nhãn ngoại lệ tiềm năng không phải kiểm định và không xóa quan sát.\n\nTần suất\n1\n1 (20.00%)\n2\n1 (20.00%)\n3\n1 (20.00%)\n4\n1 (20.00%)\n100\n1 (20.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\n1\t1\n2\t2\n3\t3\n4\t4\n5\t100",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-36-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-36-viewport.png",
+      "durationMs": 2861,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 37,
+      "name": "Chuẩn hóa tần suất của cùng một số",
+      "action": "Nhập 1,+001.0,1e0,1.00; đọc tần suất.",
+      "fixture": "x\\n1\\n+001.0\\n1e0\\n1.00",
+      "expected": "Một giá trị canonical, count4, 100%; tổng4; mốt1.",
+      "rationale": "Các biểu diễn bằng nhau về số học phải gộp tần suất thay vì tách theo chuỗi.",
+      "simulation": false,
+      "started": "2026-10-31T09:40:09.592Z",
+      "status": "PASS",
+      "detail": {
+        "row": "1\n4 (100.00%)",
+        "mode": "= 1"
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 4 hàng • Được chọn 4 • Hợp lệ 4 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 6.7 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n4\nTổng\n=\n4.00\nTrung bình\n=\n1.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n1.00\nTrung vị\n=\n1.00\nPhương sai tổng thể\n=\n0.00\nPhương sai mẫu\n=\n0.00\nĐộ lệch chuẩn tổng thể\n=\n0.00\nĐộ lệch chuẩn mẫu\n=\n0.00\nMốt\n= 1\nTần suất\n1\n4 (100.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\n1\t1\n2\t+001.0\n3\t1e0\n4\t1.00",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-37-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-37-viewport.png",
+      "durationMs": 2391,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 38,
+      "name": "Cắt phần hiển thị tần suất",
+      "action": "Nhập các số 1..101 rồi đọc phần tần suất và tổng.",
+      "fixture": "101 giá trị nguyên liên tiếp từ 1 đến 101",
+      "expected": "n101; tổng5151; mean51; 100 dòng tần suất và giải thích 100/101.",
+      "rationale": "Giới hạn hiển thị không được trở thành giới hạn âm thầm của dữ liệu tính.",
+      "simulation": false,
+      "started": "2026-10-31T09:40:11.987Z",
+      "status": "PASS",
+      "detail": {
+        "frequencyRows": 100,
+        "result": "Tổng 101 hàng • Được chọn 101 • Hợp lệ 101 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 5.2 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n101\nTổng\n=\n5151.00\nTrung bình\n=\n51.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n101.00\nTrung vị\n=\n51.00\nPhương sai tổng thể\n=\n850.00\nPhương sai mẫu\n=\n858.50\nĐộ lệch chuẩn tổng thể\n≈\n29.15\nĐộ lệch chuẩn mẫu\n≈\n29.30\n\nHiển thị 100/101 giá trị tần suất; phần trăm dùng toàn bộ 101 quan sát hợp lệ.\n\nTần suất\n1\n1 (0.99%)\n2\n1 (0.99%)\n3\n1 (0.99%)\n4\n1 (0.99%)\n5\n1 (0.99%)\n6\n1 (0.99%)\n7\n1 (0.99%)\n8\n1 (0.99%)\n9\n1 (0.99%)\n10\n1 (0.99%)\n11\n1 (0.99%)\n12\n1 (0.99%)\n13\n1 (0.99%)\n14\n1 (0.99%)\n15\n1 (0.99%)\n16\n1 (0.99%)\n17\n1 (0.99%)\n18\n1 (0.99%)\n19\n1 (0.99%)\n20\n1 (0.99%)\n21\n1 (0.99%)\n22\n1 (0.99%)\n23\n1 (0.99%)\n24\n1 (0.99%)\n25\n1 (0.99%)\n26\n1 (0.99%)\n27\n1 (0.99%)\n28\n1 (0.99%)\n29\n1 (0.99%)\n30\n1 (0.99%)\n31\n1 (0.99%)\n32\n1 (0.99%)\n33\n1 (0.99%)\n34\n1 (0.99%)\n35\n1 (0.99%)\n36\n1 (0.99%)\n37\n1 (0.99%)\n38\n1 (0.99%)\n39\n1 (0.99%)\n40\n1 (0.99%)\n41\n1 (0.99%)\n42\n1 (0.99%)\n43\n1 (0.99%)\n44\n1 (0.99%)\n45\n1 (0.99%)\n46\n1 (0.99%)\n47\n1 (0.99%)\n48\n1 (0.99%)\n49\n1 (0.99%)\n50\n1 (0.99%)\n51\n1 (0.99%)\n52\n1 (0.99%)\n53\n1 (0.99%)\n54\n1 (0.99%)\n55\n1 (0.99%)\n56\n1 (0.99%)\n57\n1 (0.99%)\n58\n1 (0.99%)\n59\n1 (0.99%)\n60\n1 (0.99%)\n61\n1 (0.99%)\n62\n1 (0.99%)\n63\n1 (0.99%)\n64\n1 (0.99%)\n65\n1 (0.99%)\n66\n1 (0.99%)\n67\n1 (0.99%)\n68\n1 (0.99%)\n69\n1 (0.99%)\n70\n1 (0.99%)\n71\n1 (0.99%)\n72\n1 (0.99%)\n73\n1 (0.99%)\n74\n1 (0.99%)\n75\n1 (0.99%)\n76\n1 (0.99%)\n77\n1 (0.99%)\n78\n1 (0.99%)\n79\n1 (0.99%)\n80\n1 (0.99%)\n81\n1 (0.99%)\n82\n1 (0.99%)\n83\n1 (0.99%)\n84\n1 (0.99%)\n85\n1 (0.99%)\n86\n1 (0.99%)\n87\n1 (0.99%)\n88\n1 (0.99%)\n89\n1 (0.99%)\n90\n1 (0.99%)\n91\n1 (0.99%)\n92\n1 (0.99%)\n93\n1 (0.99%)\n94\n1 (0.99%)\n95\n1 (0.99%)\n96\n1 (0.99%)\n97\n1 (0.99%)\n98\n1 (0.99%)\n99\n1 (0.99%)\n100\n1 (0.99%)\n\nHiển thị 100 / 101 giá trị tần suất; các tổng tính trên toàn bộ dữ liệu.\n\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\n1\t1\n2\t2\n3\t3\n4\t4\n5\t5\n6\t6\n7\t7\n8\t8\n9\t9\n10\t10\n11\t11\n12\t12\n13\t13\n14\t14\n15\t15\n16\t16\n17\t17\n18\t18\n19\t19\n20\t20\n21\t21\n22\t22\n23\t23\n24\t24\n25\t25\n26\t26\n27\t27\n28\t28\n29\t29\n30\t30\n31\t31\n32\t32\n33\t33\n34\t34\n35\t35\n36\t36\n37\t37\n38\t38\n39\t39\n40\t40\n41\t41\n42\t42\n43\t43\n44\t44\n45\t45\n46\t46\n47\t47\n48\t48\n49\t49\n50\t50\n51\t51\n52\t52\n53\t53\n54\t54\n55\t55\n56\t56\n57\t57\n58\t58\n59\t59\n60\t60\n61\t61\n62\t62\n63\t63\n64\t64\n65\t65\n66\t66\n67\t67\n68\t68\n69\t69\n70\t70\n71\t71\n72\t72\n73\t73\n74\t74\n75\t75\n76\t76\n77\t77\n78\t78\n79\t79\n80\t80\n81\t81\n82\t82\n83\t83\n84\t84\n85\t85\n86\t86\n87\t87\n88\t88\n89\t89\n90\t90\n91\t91\n92\t92\n93\t93\n94\t94\n95\t95\n96\t96\n97\t97\n98\t98\n99\t99\n100\t100\n101\t101"
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 101 hàng • Được chọn 101 • Hợp lệ 101 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 5.2 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n101\nTổng\n=\n5151.00\nTrung bình\n=\n51.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n101.00\nTrung vị\n=\n51.00\nPhương sai tổng thể\n=\n850.00\nPhương sai mẫu\n=\n858.50\nĐộ lệch chuẩn tổng thể\n≈\n29.15\nĐộ lệch chuẩn mẫu\n≈\n29.30\n\nHiển thị 100/101 giá trị tần suất; phần trăm dùng toàn bộ 101 quan sát hợp lệ.\n\nTần suất\n1\n1 (0.99%)\n2\n1 (0.99%)\n3\n1 (0.99%)\n4\n1 (0.99%)\n5\n1 (0.99%)\n6\n1 (0.99%)\n7\n1 (0.99%)\n8\n1 (0.99%)\n9\n1 (0.99%)\n10\n1 (0.99%)\n11\n1 (0.99%)\n12\n1 (0.99%)\n13\n1 (0.99%)\n14\n1 (0.99%)\n15\n1 (0.99%)\n16\n1 (0.99%)\n17\n1 (0.99%)\n18\n1 (0.99%)\n19\n1 (0.99%)\n20\n1 (0.99%)\n21\n1 (0.99%)\n22\n1 (0.99%)\n23\n1 (0.99%)\n24\n1 (0.99%)\n25\n1 (0.99%)\n26\n1 (0.99%)\n27\n1 (0.99%)\n28\n1 (0.99%)\n29\n1 (0.99%)\n30\n1 (0.99%)\n31\n1 (0.99%)\n32\n1 (0.99%)\n33\n1 (0.99%)\n34\n1 (0.99%)\n35\n1 (0.99%)\n36\n1 (0.99%)\n37\n1 (0.99%)\n38\n1 (0.99%)\n39\n1 (0.99%)\n40\n1 (0.99%)\n41\n1 (0.99%)\n42\n1 (0.99%)\n43\n1 (0.99%)\n44\n1 (0.99%)\n45\n1 (0.99%)\n46\n1 (0.99%)\n47\n1 (0.99%)\n48\n1 (0.99%)\n49\n1 (0.99%)\n50\n1 (0.99%)\n51\n1 (0.99%)\n52\n1 (0.99%)\n53\n1 (0.99%)\n54\n1 (0.99%)\n55\n1 (0.99%)\n56\n1 (0.99%)\n57\n1 (0.99%)\n58\n1 (0.99%)\n59\n1 (0.99%)\n60\n1 (0.99%)\n61\n1 (0.99%)\n62\n1 (0.99%)\n63\n1 (0.99%)\n64\n1 (0.99%)\n65\n1 (0.99%)\n66\n1 (0.99%)\n67\n1 (0.99%)\n68\n1 (0.99%)\n69\n1 (0.99%)\n70\n1 (0.99%)\n71\n1 (0.99%)\n72\n1 (0.99%)\n73\n1 (0.99%)\n74\n1 (0.99%)\n75\n1 (0.99%)\n76\n1 (0.99%)\n77\n1 (0.99%)\n78\n1 (0.99%)\n79\n1 (0.99%)\n80\n1 (0.99%)\n81\n1 (0.99%)\n82\n1 (0.99%)\n83\n1 (0.99%)\n84\n1 (0.99%)\n85\n1 (0.99%)\n86\n1 (0.99%)\n87\n1 (0.99%)\n88\n1 (0.99%)\n89\n1 (0.99%)\n90\n1 (0.99%)\n91\n1 (0.99%)\n92\n1 (0.99%)\n93\n1 (0.99%)\n94\n1 (0.99%)\n95\n1 (0.99%)\n96\n1 (0.99%)\n97\n1 (0.99%)\n98\n1 (0.99%)\n99\n1 (0.99%)\n100\n1 (0.99%)\n\nHiển thị 100 / 101 giá trị tần suất; các tổng tính trên toàn bộ dữ liệu.\n\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\n1\t1\n2\t2\n3\t3\n4\t4\n5\t5\n6\t6\n7\t7\n8\t8\n9\t9\n10\t10\n11\t11\n12\t12\n13\t13\n14\t14\n15\t15\n16\t16\n17\t17\n18\t18\n19\t19\n20\t20\n21\t21\n22\t22\n23\t23\n24\t24\n25\t25\n26\t26\n27\t27\n28\t28\n29\t29\n30\t30\n31\t31\n32\t32\n33\t33\n34\t34\n35\t35\n36\t36\n37\t37\n38\t38\n39\t39\n40\t40\n41\t41\n42\t42\n43\t43\n44\t44\n45\t45\n46\t46\n47\t47\n48\t48\n49\t49\n50\t50\n51\t51\n52\t52\n53\t53\n54\t54\n55\t55\n56\t56\n57\t57\n58\t58\n59\t59\n60\t60\n61\t61\n62\t62\n63\t63\n64\t64\n65\t65\n66\t66\n67\t67\n68\t68\n69\t69\n70\t70\n71\t71\n72\t72\n73\t73\n74\t74\n75\t75\n76\t76\n77\t77\n78\t78\n79\t79\n80\t80\n81\t81\n82\t82\n83\t83\n84\t84\n85\t85\n86\t86\n87\t87\n88\t88\n89\t89\n90\t90\n91\t91\n92\t92\n93\t93\n94\t94\n95\t95\n96\t96\n97\t97\n98\t98\n99\t99\n100\t100\n101\t101",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-38-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-38-viewport.png",
+      "durationMs": 2930,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 39,
+      "name": "Cắt phần hiển thị nhóm",
+      "action": "Nhập 101 nhóm g1..g101, mỗi nhóm giá trị1, chọn cột nhóm.",
+      "fixture": "group,value; g1,1 đến g101,1",
+      "expected": "Tổng/count101; mean1; hiển thị100 nhóm và giải thích100/101.",
+      "rationale": "Tóm tắt nhiều nhóm phải công bố phần hiển thị và vẫn tính toàn bộ dữ liệu.",
+      "simulation": false,
+      "started": "2026-10-31T09:40:14.921Z",
+      "status": "PASS",
+      "detail": {
+        "visibleGroups": 100,
+        "result": "Tổng 101 hàng • Được chọn 101 • Hợp lệ 101 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 5.6 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n101\nTổng\n=\n101.00\nTrung bình\n=\n1.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n1.00\nTrung vị\n=\n1.00\nPhương sai tổng thể\n=\n0.00\nPhương sai mẫu\n=\n0.00\nĐộ lệch chuẩn tổng thể\n=\n0.00\nĐộ lệch chuẩn mẫu\n=\n0.00\nMốt\n= 1\n\nHiển thị 100/101 nhóm; thống kê chung vẫn dùng toàn bộ quan sát hợp lệ.\n\nTần suất\n1\n101 (100.00%)\nTóm tắt theo nhóm\ng1: n=1, tổng== 1.00, trung bình== 1.00\ng2: n=1, tổng== 1.00, trung bình== 1.00\ng3: n=1, tổng== 1.00, trung bình== 1.00\ng4: n=1, tổng== 1.00, trung bình== 1.00\ng5: n=1, tổng== 1.00, trung bình== 1.00\ng6: n=1, tổng== 1.00, trung bình== 1.00\ng7: n=1, tổng== 1.00, trung bình== 1.00\ng8: n=1, tổng== 1.00, trung bình== 1.00\ng9: n=1, tổng== 1.00, trung bình== 1.00\ng10: n=1, tổng== 1.00, trung bình== 1.00\ng11: n=1, tổng== 1.00, trung bình== 1.00\ng12: n=1, tổng== 1.00, trung bình== 1.00\ng13: n=1, tổng== 1.00, trung bình== 1.00\ng14: n=1, tổng== 1.00, trung bình== 1.00\ng15: n=1, tổng== 1.00, trung bình== 1.00\ng16: n=1, tổng== 1.00, trung bình== 1.00\ng17: n=1, tổng== 1.00, trung bình== 1.00\ng18: n=1, tổng== 1.00, trung bình== 1.00\ng19: n=1, tổng== 1.00, trung bình== 1.00\ng20: n=1, tổng== 1.00, trung bình== 1.00\ng21: n=1, tổng== 1.00, trung bình== 1.00\ng22: n=1, tổng== 1.00, trung bình== 1.00\ng23: n=1, tổng== 1.00, trung bình== 1.00\ng24: n=1, tổng== 1.00, trung bình== 1.00\ng25: n=1, tổng== 1.00, trung bình== 1.00\ng26: n=1, tổng== 1.00, trung bình== 1.00\ng27: n=1, tổng== 1.00, trung bình== 1.00\ng28: n=1, tổng== 1.00, trung bình== 1.00\ng29: n=1, tổng== 1.00, trung bình== 1.00\ng30: n=1, tổng== 1.00, trung bình== 1.00\ng31: n=1, tổng== 1.00, trung bình== 1.00\ng32: n=1, tổng== 1.00, trung bình== 1.00\ng33: n=1, tổng== 1.00, trung bình== 1.00\ng34: n=1, tổng== 1.00, trung bình== 1.00\ng35: n=1, tổng== 1.00, trung bình== 1.00\ng36: n=1, tổng== 1.00, trung bình== 1.00\ng37: n=1, tổng== 1.00, trung bình== 1.00\ng38: n=1, tổng== 1.00, trung bình== 1.00\ng39: n=1, tổng== 1.00, trung bình== 1.00\ng40: n=1, tổng== 1.00, trung bình== 1.00\ng41: n=1, tổng== 1.00, trung bình== 1.00\ng42: n=1, tổng== 1.00, trung bình== 1.00\ng43: n=1, tổng== 1.00, trung bình== 1.00\ng44: n=1, tổng== 1.00, trung bình== 1.00\ng45: n=1, tổng== 1.00, trung bình== 1.00\ng46: n=1, tổng== 1.00, trung bình== 1.00\ng47: n=1, tổng== 1.00, trung bình== 1.00\ng48: n=1, tổng== 1.00, trung bình== 1.00\ng49: n=1, tổng== 1.00, trung bình== 1.00\ng50: n=1, tổng== 1.00, trung bình== 1.00\ng51: n=1, tổng== 1.00, trung bình== 1.00\ng52: n=1, tổng== 1.00, trung bình== 1.00\ng53: n=1, tổng== 1.00, trung bình== 1.00\ng54: n=1, tổng== 1.00, trung bình== 1.00\ng55: n=1, tổng== 1.00, trung bình== 1.00\ng56: n=1, tổng== 1.00, trung bình== 1.00\ng57: n=1, tổng== 1.00, trung bình== 1.00\ng58: n=1, tổng== 1.00, trung bình== 1.00\ng59: n=1, tổng== 1.00, trung bình== 1.00\ng60: n=1, tổng== 1.00, trung bình== 1.00\ng61: n=1, tổng== 1.00, trung bình== 1.00\ng62: n=1, tổng== 1.00, trung bình== 1.00\ng63: n=1, tổng== 1.00, trung bình== 1.00\ng64: n=1, tổng== 1.00, trung bình== 1.00\ng65: n=1, tổng== 1.00, trung bình== 1.00\ng66: n=1, tổng== 1.00, trung bình== 1.00\ng67: n=1, tổng== 1.00, trung bình== 1.00\ng68: n=1, tổng== 1.00, trung bình== 1.00\ng69: n=1, tổng== 1.00, trung bình== 1.00\ng70: n=1, tổng== 1.00, trung bình== 1.00\ng71: n=1, tổng== 1.00, trung bình== 1.00\ng72: n=1, tổng== 1.00, trung bình== 1.00\ng73: n=1, tổng== 1.00, trung bình== 1.00\ng74: n=1, tổng== 1.00, trung bình== 1.00\ng75: n=1, tổng== 1.00, trung bình== 1.00\ng76: n=1, tổng== 1.00, trung bình== 1.00\ng77: n=1, tổng== 1.00, trung bình== 1.00\ng78: n=1, tổng== 1.00, trung bình== 1.00\ng79: n=1, tổng== 1.00, trung bình== 1.00\ng80: n=1, tổng== 1.00, trung bình== 1.00\ng81: n=1, tổng== 1.00, trung bình== 1.00\ng82: n=1, tổng== 1.00, trung bình== 1.00\ng83: n=1, tổng== 1.00, trung bình== 1.00\ng84: n=1, tổng== 1.00, trung bình== 1.00\ng85: n=1, tổng== 1.00, trung bình== 1.00\ng86: n=1, tổng== 1.00, trung bình== 1.00\ng87: n=1, tổng== 1.00, trung bình== 1.00\ng88: n=1, tổng== 1.00, trung bình== 1.00\ng89: n=1, tổng== 1.00, trung bình== 1.00\ng90: n=1, tổng== 1.00, trung bình== 1.00\ng91: n=1, tổng== 1.00, trung bình== 1.00\ng92: n=1, tổng== 1.00, trung bình== 1.00\ng93: n=1, tổng== 1.00, trung bình== 1.00\ng94: n=1, tổng== 1.00, trung bình== 1.00\ng95: n=1, tổng== 1.00, trung bình== 1.00\ng96: n=1, tổng== 1.00, trung bình== 1.00\ng97: n=1, tổng== 1.00, trung bình== 1.00\ng98: n=1, tổng== 1.00, trung bình== 1.00\ng99: n=1, tổng== 1.00, trung bình== 1.00\ng100: n=1, tổng== 1.00, trung bình== 1.00\n\nHiển thị 100 / 101 nhóm; các tổng tính trên toàn bộ dữ liệu.\n\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tgroup\tvalue\n1\tg1\t1\n2\tg2\t1\n3\tg3\t1\n4\tg4\t1\n5\tg5\t1\n6\tg6\t1\n7\tg7\t1\n8\tg8\t1\n9\tg9\t1\n10\tg10\t1\n11\tg11\t1\n12\tg12\t1\n13\tg13\t1\n14\tg14\t1\n15\tg15\t1\n16\tg16\t1\n17\tg17\t1\n18\tg18\t1\n19\tg19\t1\n20\tg20\t1\n21\tg21\t1\n22\tg22\t1\n23\tg23\t1\n24\tg24\t1\n25\tg25\t1\n26\tg26\t1\n27\tg27\t1\n28\tg28\t1\n29\tg29\t1\n30\tg30\t1\n31\tg31\t1\n32\tg32\t1\n33\tg33\t1\n34\tg34\t1\n35\tg35\t1\n36\tg36\t1\n37\tg37\t1\n38\tg38\t1\n39\tg39\t1\n40\tg40\t1\n41\tg41\t1\n42\tg42\t1\n43\tg43\t1\n44\tg44\t1\n45\tg45\t1\n46\tg46\t1\n47\tg47\t1\n48\tg48\t1\n49\tg49\t1\n50\tg50\t1\n51\tg51\t1\n52\tg52\t1\n53\tg53\t1\n54\tg54\t1\n55\tg55\t1\n56\tg56\t1\n57\tg57\t1\n58\tg58\t1\n59\tg59\t1\n60\tg60\t1\n61\tg61\t1\n62\tg62\t1\n63\tg63\t1\n64\tg64\t1\n65\tg65\t1\n66\tg66\t1\n67\tg67\t1\n68\tg68\t1\n69\tg69\t1\n70\tg70\t1\n71\tg71\t1\n72\tg72\t1\n73\tg73\t1\n74\tg74\t1\n75\tg75\t1\n76\tg76\t1\n77\tg77\t1\n78\tg78\t1\n79\tg79\t1\n80\tg80\t1\n81\tg81\t1\n82\tg82\t1\n83\tg83\t1\n84\tg84\t1\n85\tg85\t1\n86\tg86\t1\n87\tg87\t1\n88\tg88\t1\n89\tg89\t1\n90\tg90\t1\n91\tg91\t1\n92\tg92\t1\n93\tg93\t1\n94\tg94\t1\n95\tg95\t1\n96\tg96\t1\n97\tg97\t1\n98\tg98\t1\n99\tg99\t1\n100\tg100\t1\n101\tg101\t1"
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 101 hàng • Được chọn 101 • Hợp lệ 101 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 5.6 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n101\nTổng\n=\n101.00\nTrung bình\n=\n1.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n1.00\nTrung vị\n=\n1.00\nPhương sai tổng thể\n=\n0.00\nPhương sai mẫu\n=\n0.00\nĐộ lệch chuẩn tổng thể\n=\n0.00\nĐộ lệch chuẩn mẫu\n=\n0.00\nMốt\n= 1\n\nHiển thị 100/101 nhóm; thống kê chung vẫn dùng toàn bộ quan sát hợp lệ.\n\nTần suất\n1\n101 (100.00%)\nTóm tắt theo nhóm\ng1: n=1, tổng== 1.00, trung bình== 1.00\ng2: n=1, tổng== 1.00, trung bình== 1.00\ng3: n=1, tổng== 1.00, trung bình== 1.00\ng4: n=1, tổng== 1.00, trung bình== 1.00\ng5: n=1, tổng== 1.00, trung bình== 1.00\ng6: n=1, tổng== 1.00, trung bình== 1.00\ng7: n=1, tổng== 1.00, trung bình== 1.00\ng8: n=1, tổng== 1.00, trung bình== 1.00\ng9: n=1, tổng== 1.00, trung bình== 1.00\ng10: n=1, tổng== 1.00, trung bình== 1.00\ng11: n=1, tổng== 1.00, trung bình== 1.00\ng12: n=1, tổng== 1.00, trung bình== 1.00\ng13: n=1, tổng== 1.00, trung bình== 1.00\ng14: n=1, tổng== 1.00, trung bình== 1.00\ng15: n=1, tổng== 1.00, trung bình== 1.00\ng16: n=1, tổng== 1.00, trung bình== 1.00\ng17: n=1, tổng== 1.00, trung bình== 1.00\ng18: n=1, tổng== 1.00, trung bình== 1.00\ng19: n=1, tổng== 1.00, trung bình== 1.00\ng20: n=1, tổng== 1.00, trung bình== 1.00\ng21: n=1, tổng== 1.00, trung bình== 1.00\ng22: n=1, tổng== 1.00, trung bình== 1.00\ng23: n=1, tổng== 1.00, trung bình== 1.00\ng24: n=1, tổng== 1.00, trung bình== 1.00\ng25: n=1, tổng== 1.00, trung bình== 1.00\ng26: n=1, tổng== 1.00, trung bình== 1.00\ng27: n=1, tổng== 1.00, trung bình== 1.00\ng28: n=1, tổng== 1.00, trung bình== 1.00\ng29: n=1, tổng== 1.00, trung bình== 1.00\ng30: n=1, tổng== 1.00, trung bình== 1.00\ng31: n=1, tổng== 1.00, trung bình== 1.00\ng32: n=1, tổng== 1.00, trung bình== 1.00\ng33: n=1, tổng== 1.00, trung bình== 1.00\ng34: n=1, tổng== 1.00, trung bình== 1.00\ng35: n=1, tổng== 1.00, trung bình== 1.00\ng36: n=1, tổng== 1.00, trung bình== 1.00\ng37: n=1, tổng== 1.00, trung bình== 1.00\ng38: n=1, tổng== 1.00, trung bình== 1.00\ng39: n=1, tổng== 1.00, trung bình== 1.00\ng40: n=1, tổng== 1.00, trung bình== 1.00\ng41: n=1, tổng== 1.00, trung bình== 1.00\ng42: n=1, tổng== 1.00, trung bình== 1.00\ng43: n=1, tổng== 1.00, trung bình== 1.00\ng44: n=1, tổng== 1.00, trung bình== 1.00\ng45: n=1, tổng== 1.00, trung bình== 1.00\ng46: n=1, tổng== 1.00, trung bình== 1.00\ng47: n=1, tổng== 1.00, trung bình== 1.00\ng48: n=1, tổng== 1.00, trung bình== 1.00\ng49: n=1, tổng== 1.00, trung bình== 1.00\ng50: n=1, tổng== 1.00, trung bình== 1.00\ng51: n=1, tổng== 1.00, trung bình== 1.00\ng52: n=1, tổng== 1.00, trung bình== 1.00\ng53: n=1, tổng== 1.00, trung bình== 1.00\ng54: n=1, tổng== 1.00, trung bình== 1.00\ng55: n=1, tổng== 1.00, trung bình== 1.00\ng56: n=1, tổng== 1.00, trung bình== 1.00\ng57: n=1, tổng== 1.00, trung bình== 1.00\ng58: n=1, tổng== 1.00, trung bình== 1.00\ng59: n=1, tổng== 1.00, trung bình== 1.00\ng60: n=1, tổng== 1.00, trung bình== 1.00\ng61: n=1, tổng== 1.00, trung bình== 1.00\ng62: n=1, tổng== 1.00, trung bình== 1.00\ng63: n=1, tổng== 1.00, trung bình== 1.00\ng64: n=1, tổng== 1.00, trung bình== 1.00\ng65: n=1, tổng== 1.00, trung bình== 1.00\ng66: n=1, tổng== 1.00, trung bình== 1.00\ng67: n=1, tổng== 1.00, trung bình== 1.00\ng68: n=1, tổng== 1.00, trung bình== 1.00\ng69: n=1, tổng== 1.00, trung bình== 1.00\ng70: n=1, tổng== 1.00, trung bình== 1.00\ng71: n=1, tổng== 1.00, trung bình== 1.00\ng72: n=1, tổng== 1.00, trung bình== 1.00\ng73: n=1, tổng== 1.00, trung bình== 1.00\ng74: n=1, tổng== 1.00, trung bình== 1.00\ng75: n=1, tổng== 1.00, trung bình== 1.00\ng76: n=1, tổng== 1.00, trung bình== 1.00\ng77: n=1, tổng== 1.00, trung bình== 1.00\ng78: n=1, tổng== 1.00, trung bình== 1.00\ng79: n=1, tổng== 1.00, trung bình== 1.00\ng80: n=1, tổng== 1.00, trung bình== 1.00\ng81: n=1, tổng== 1.00, trung bình== 1.00\ng82: n=1, tổng== 1.00, trung bình== 1.00\ng83: n=1, tổng== 1.00, trung bình== 1.00\ng84: n=1, tổng== 1.00, trung bình== 1.00\ng85: n=1, tổng== 1.00, trung bình== 1.00\ng86: n=1, tổng== 1.00, trung bình== 1.00\ng87: n=1, tổng== 1.00, trung bình== 1.00\ng88: n=1, tổng== 1.00, trung bình== 1.00\ng89: n=1, tổng== 1.00, trung bình== 1.00\ng90: n=1, tổng== 1.00, trung bình== 1.00\ng91: n=1, tổng== 1.00, trung bình== 1.00\ng92: n=1, tổng== 1.00, trung bình== 1.00\ng93: n=1, tổng== 1.00, trung bình== 1.00\ng94: n=1, tổng== 1.00, trung bình== 1.00\ng95: n=1, tổng== 1.00, trung bình== 1.00\ng96: n=1, tổng== 1.00, trung bình== 1.00\ng97: n=1, tổng== 1.00, trung bình== 1.00\ng98: n=1, tổng== 1.00, trung bình== 1.00\ng99: n=1, tổng== 1.00, trung bình== 1.00\ng100: n=1, tổng== 1.00, trung bình== 1.00\n\nHiển thị 100 / 101 nhóm; các tổng tính trên toàn bộ dữ liệu.\n\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tgroup\tvalue\n1\tg1\t1\n2\tg2\t1\n3\tg3\t1\n4\tg4\t1\n5\tg5\t1\n6\tg6\t1\n7\tg7\t1\n8\tg8\t1\n9\tg9\t1\n10\tg10\t1\n11\tg11\t1\n12\tg12\t1\n13\tg13\t1\n14\tg14\t1\n15\tg15\t1\n16\tg16\t1\n17\tg17\t1\n18\tg18\t1\n19\tg19\t1\n20\tg20\t1\n21\tg21\t1\n22\tg22\t1\n23\tg23\t1\n24\tg24\t1\n25\tg25\t1\n26\tg26\t1\n27\tg27\t1\n28\tg28\t1\n29\tg29\t1\n30\tg30\t1\n31\tg31\t1\n32\tg32\t1\n33\tg33\t1\n34\tg34\t1\n35\tg35\t1\n36\tg36\t1\n37\tg37\t1\n38\tg38\t1\n39\tg39\t1\n40\tg40\t1\n41\tg41\t1\n42\tg42\t1\n43\tg43\t1\n44\tg44\t1\n45\tg45\t1\n46\tg46\t1\n47\tg47\t1\n48\tg48\t1\n49\tg49\t1\n50\tg50\t1\n51\tg51\t1\n52\tg52\t1\n53\tg53\t1\n54\tg54\t1\n55\tg55\t1\n56\tg56\t1\n57\tg57\t1\n58\tg58\t1\n59\tg59\t1\n60\tg60\t1\n61\tg61\t1\n62\tg62\t1\n63\tg63\t1\n64\tg64\t1\n65\tg65\t1\n66\tg66\t1\n67\tg67\t1\n68\tg68\t1\n69\tg69\t1\n70\tg70\t1\n71\tg71\t1\n72\tg72\t1\n73\tg73\t1\n74\tg74\t1\n75\tg75\t1\n76\tg76\t1\n77\tg77\t1\n78\tg78\t1\n79\tg79\t1\n80\tg80\t1\n81\tg81\t1\n82\tg82\t1\n83\tg83\t1\n84\tg84\t1\n85\tg85\t1\n86\tg86\t1\n87\tg87\t1\n88\tg88\t1\n89\tg89\t1\n90\tg90\t1\n91\tg91\t1\n92\tg92\t1\n93\tg93\t1\n94\tg94\t1\n95\tg95\t1\n96\tg96\t1\n97\tg97\t1\n98\tg98\t1\n99\tg99\t1\n100\tg100\t1\n101\tg101\t1",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-39-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-39-viewport.png",
+      "durationMs": 2984,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 40,
+      "name": "Nhiều mốt đồng thời",
+      "action": "Nhập −2,−2,0,0,3 rồi tính.",
+      "fixture": "x\\n-2\\n-2\\n0\\n0\\n3",
+      "expected": "Hai mốt −2 và0; tổng−1; mean−0.20; hai tần suất có count2.",
+      "rationale": "Không bỏ mất các mốt đồng hạng hoặc nhầm số âm khi sắp xếp.",
+      "simulation": false,
+      "started": "2026-10-31T09:40:17.908Z",
+      "status": "PASS",
+      "detail": {
+        "modes": "= -2, = 0",
+        "values": [
+          "-2",
+          "0"
+        ],
+        "counts": [
+          2,
+          2,
+          1
+        ]
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 5 hàng • Được chọn 5 • Hợp lệ 5 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 3.1 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n5\nTổng\n=\n-1.00\nTrung bình\n=\n-0.20\nNhỏ nhất\n=\n-2.00\nLớn nhất\n=\n3.00\nTrung vị\n=\n0.00\nPhương sai tổng thể\n=\n3.36\nPhương sai mẫu\n=\n4.20\nĐộ lệch chuẩn tổng thể\n≈\n1.83\nĐộ lệch chuẩn mẫu\n≈\n2.05\nMốt\n= -2, = 0\nTần suất\n-2\n2 (40.00%)\n0\n2 (40.00%)\n3\n1 (20.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\n1\t-2\n2\t-2\n3\t0\n4\t0\n5\t3",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-40-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-40-viewport.png",
+      "durationMs": 2539,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 41,
+      "name": "Giao của tìm kiếm và nhóm",
+      "action": "Lọc nhóm A chính xác đồng thời tìm target không phân biệt hoa thường.",
+      "fixture": "group,label,value\\nA,Target,1\\nA,other,2\\na,TARGET,3\\nB,target,4",
+      "expected": "Chỉ hàng1; n1; tổng1; loại3.",
+      "rationale": "Tìm kiếm và nhóm có quy tắc chữ hoa khác nhau, phải áp dụng phép giao rõ ràng.",
+      "simulation": false,
+      "started": "2026-10-31T09:40:20.450Z",
+      "status": "PASS",
+      "detail": "Tổng 4 hàng • Được chọn 1 • Hợp lệ 1 • Thiếu 0 • Loại bởi bộ lọc 3\n\nThống kê độ chính xác cao • 4.4 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n1\nTổng\n=\n1.00\nTrung bình\n=\n1.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n1.00\nTrung vị\n=\n1.00\nPhương sai tổng thể\n=\n0.00\nPhương sai mẫu\nKhông xác định\nĐộ lệch chuẩn tổng thể\n=\n0.00\nĐộ lệch chuẩn mẫu\nKhông xác định\nTần suất\n1\n1 (100.00%)\nTóm tắt theo nhóm\nA: n=1, tổng== 1.00, trung bình== 1.00\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tgroup\tlabel\tvalue\n1\tA\tTarget\t1",
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 4 hàng • Được chọn 1 • Hợp lệ 1 • Thiếu 0 • Loại bởi bộ lọc 3\n\nThống kê độ chính xác cao • 4.4 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n1\nTổng\n=\n1.00\nTrung bình\n=\n1.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n1.00\nTrung vị\n=\n1.00\nPhương sai tổng thể\n=\n0.00\nPhương sai mẫu\nKhông xác định\nĐộ lệch chuẩn tổng thể\n=\n0.00\nĐộ lệch chuẩn mẫu\nKhông xác định\nTần suất\n1\n1 (100.00%)\nTóm tắt theo nhóm\nA: n=1, tổng== 1.00, trung bình== 1.00\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tgroup\tlabel\tvalue\n1\tA\tTarget\t1",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-41-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-41-viewport.png",
+      "durationMs": 2660,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 42,
+      "name": "Lựa chọn chỉ số được lưu",
+      "action": "Bỏ chọn Trung bình → tính → lưu/reload/mở/tính → chọn lại.",
+      "fixture": "Dữ liệu mẫu 10,20,20,30; mean20; tổng80",
+      "expected": "Mean ẩn trước và sau mở lại; chọn lại hiện20; tổng80 luôn giữ.",
+      "rationale": "Tùy chọn metrics thuộc cấu hình dự án cần được phục hồi cùng dữ liệu.",
+      "simulation": false,
+      "started": "2026-10-31T09:40:23.113Z",
+      "status": "PASS",
+      "detail": {
+        "mean": "=\n20.00",
+        "sum": "=\n80.00"
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 4 hàng • Được chọn 4 • Hợp lệ 4 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 5.8 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n4\nTổng\n=\n80.00\nTrung bình\n=\n20.00\nNhỏ nhất\n=\n10.00\nLớn nhất\n=\n30.00\nTrung vị\n=\n20.00\nPhương sai tổng thể\n=\n50.00\nPhương sai mẫu\n≈\n66.67\nĐộ lệch chuẩn tổng thể\n≈\n7.07\nĐộ lệch chuẩn mẫu\n≈\n8.16\nMốt\n= 20\nTần suất\n10\n1 (25.00%)\n20\n2 (50.00%)\n30\n1 (25.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tNhóm\tGiá trị\n1\tA\t10\n2\tA\t20\n3\tB\t20\n4\tB\t30",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-42-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-42-viewport.png",
+      "durationMs": 3681,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 43,
+      "name": "Phím tắt Ctrl+Enter",
+      "action": "Nhập 1,2,3, focus Chữ số Pro rồi bấm Ctrl+Enter.",
+      "fixture": "x\\n1\\n2\\n3",
+      "expected": "Tác vụ tính thực sự hoàn tất: n3; sum6; mean2.",
+      "rationale": "Kiểm tra luồng bàn phím thật thay vì chỉ có nút bấm bằng chuột.",
+      "simulation": false,
+      "started": "2026-10-31T09:40:26.796Z",
+      "status": "PASS",
+      "detail": {
+        "count": "=\n3",
+        "sum": "=\n6.00",
+        "mean": "=\n2.00"
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 3 hàng • Được chọn 3 • Hợp lệ 3 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 3.2 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n3\nTổng\n=\n6.00\nTrung bình\n=\n2.00\nNhỏ nhất\n=\n1.00\nLớn nhất\n=\n3.00\nTrung vị\n=\n2.00\nPhương sai tổng thể\n≈\n0.67\nPhương sai mẫu\n=\n1.00\nĐộ lệch chuẩn tổng thể\n≈\n0.82\nĐộ lệch chuẩn mẫu\n=\n1.00\nTần suất\n1\n1 (33.33%)\n2\n1 (33.33%)\n3\n1 (33.33%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tx\n1\t1\n2\t2\n3\t3",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-43-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-43-viewport.png",
+      "durationMs": 2361,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 44,
+      "name": "Tệp lớn hơn giới hạn đúng một byte",
+      "action": "Nạp mẫu, chọn file 5 MiB+1 byte và đối chiếu bảng sau lỗi.",
+      "fixture": "Buffer tổng hợp 5×1024×1024+1 byte",
+      "expected": "Thông báo vượt5MiB; bảng mẫu không đổi; không báo nhập thành công.",
+      "rationale": "Giới hạn file phải được kiểm tra trước parse và giữ nguyên công việc đang có.",
+      "simulation": false,
+      "started": "2026-10-31T09:40:29.160Z",
+      "status": "PASS",
+      "detail": {
+        "bytes": 5242881,
+        "status": "LỖI: Tệp vượt quá 5 MiB",
+        "preserved": true
+      },
+      "visibleStatus": "LỖI: Tệp vượt quá 5 MiB",
+      "observedResult": "Dữ liệu đã thay đổi. Nhấn Tính toán để xem kết quả.",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-44-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-44-viewport.png",
+      "durationMs": 2371,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 45,
+      "name": "Tệp chậm không ghi đè lựa chọn mới",
+      "action": "Mô phỏng File.text bị trì hoãn; chọn mẫu mới trước khi tệp x=999 trả về.",
+      "fixture": "delayed.csv → x\\n999; lựa chọn mới là dữ liệu mẫu4hàng",
+      "expected": "Kết quả cuối vẫn là mẫu4hàng, sum80; không xuất hiện999.",
+      "rationale": "Mô phỏng có kiểm soát để kiểm tra importGeneration chống callback nhập dữ liệu cũ.",
+      "simulation": true,
+      "started": "2026-10-31T09:40:31.533Z",
+      "status": "PASS",
+      "detail": {
+        "sum": "=\n80.00",
+        "count": "=\n4",
+        "simulation": "Only synthetic delayed File.text in isolated context"
+      },
+      "visibleStatus": "Đã tính xong.",
+      "observedResult": "Tổng 4 hàng • Được chọn 4 • Hợp lệ 4 • Thiếu 0 • Loại bởi bộ lọc 0\n\nThống kê độ chính xác cao • 5.3 ms\n\n= Chính xác · ≈ Đã làm tròn theo số chữ số đã chọn. Khi nằm chính giữa hai giá trị, kết quả làm tròn về chữ số chẵn.\n\nSố lượng\n=\n4\nTổng\n=\n80.00\nTrung bình\n=\n20.00\nNhỏ nhất\n=\n10.00\nLớn nhất\n=\n30.00\nTrung vị\n=\n20.00\nPhương sai tổng thể\n=\n50.00\nPhương sai mẫu\n≈\n66.67\nĐộ lệch chuẩn tổng thể\n≈\n7.07\nĐộ lệch chuẩn mẫu\n≈\n8.16\nMốt\n= 20\nTần suất\n10\n1 (25.00%)\n20\n2 (50.00%)\n30\n1 (25.00%)\nCác hàng nguồn hợp lệ\nHàng dữ liệu\tNhóm\tGiá trị\n1\tA\t10\n2\tA\t20\n3\tB\t20\n4\tB\t30",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-45-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-45-viewport.png",
+      "durationMs": 2295,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    },
+    {
+      "index": 46,
+      "name": "Thư viện đầy và cập nhật dự án cũ",
+      "action": "Lưu10 dự án mẫu; thử lưu dự án thứ11; sau đó mở và lưu lại dự án cũ.",
+      "fixture": "11 dataset tổng hợp, thư viện giới hạn10",
+      "expected": "Lần11 báo PROJECT_LIMIT, storage giữ nguyên; cập nhật dự án cũ vẫn thành công và count10.",
+      "rationale": "Giới hạn thư viện phải phân biệt thêm mới với cập nhật, đồng thời không mất dự án đã lưu.",
+      "simulation": false,
+      "started": "2026-10-31T09:40:33.832Z",
+      "status": "PASS",
+      "detail": {
+        "blocked": "PROJECT_LIMIT: Library is full",
+        "savedProjects": 10,
+        "existingUpdate": "Đã lưu dự án trên thiết bị này."
+      },
+      "visibleStatus": "Đã lưu dự án trên thiết bị này.",
+      "observedResult": "Dữ liệu đã thay đổi. Nhấn Tính toán để xem kết quả.",
+      "errors": [],
+      "screenshot": "report-assets/screenshots/case-46-full.png",
+      "viewportScreenshot": "report-assets/screenshots/case-46-viewport.png",
+      "durationMs": 4547,
+      "scope": "Fresh isolated Edge context, synthetic data, public deployment"
+    }
+  ],
+  "acceptance": [
+    {
+      "name": "Empty print and idle cancel",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop controls do not move when results expand",
+      "status": "PASS",
+      "detail": {
+        "calculateY": 757.15625,
+        "columnWidth": 747,
+        "resultsWidth": 747,
+        "libraryWidth": 747
+      }
+    },
+    {
+      "name": "Type 7 method disclosed",
+      "status": "PASS"
+    },
+    {
+      "name": "Accuracy contrast light",
+      "status": "PASS",
+      "detail": {
+        "fg": "rgb(8, 117, 133)",
+        "bg": "rgb(243, 246, 252)",
+        "ratio": 4.982340089501567
+      }
+    },
+    {
+      "name": "Accuracy contrast dark",
+      "status": "PASS",
+      "detail": {
+        "fg": "rgb(84, 216, 229)",
+        "bg": "rgb(12, 26, 44)",
+        "ratio": 10.27767017416838
+      }
+    },
+    {
+      "name": "Theme and motion persist on reload",
+      "status": "PASS",
+      "detail": "dark reduce-motion"
+    },
+    {
+      "name": "Cancel preserves previous result and cannot complete late",
+      "status": "PASS"
+    },
+    {
+      "name": "Malformed JSON preserves current table",
+      "status": "PASS"
+    },
+    {
+      "name": "CSV neutralizes spreadsheet formulas without changing JSON data",
+      "status": "PASS"
+    },
+    {
+      "name": "Rejected storage write preserves library and shows error",
+      "status": "PASS",
+      "detail": "STORAGE_WRITE: Cannot save library"
+    },
+    {
+      "name": "Delete dismiss and accept affect only saved selection",
+      "status": "PASS"
+    },
+    {
+      "name": "Responsive 320px",
+      "status": "PASS",
+      "detail": {
+        "scroll": 320,
+        "width": 320
+      }
+    },
+    {
+      "name": "Responsive 390px",
+      "status": "PASS",
+      "detail": {
+        "scroll": 390,
+        "width": 390
+      }
+    },
+    {
+      "name": "Responsive 768px",
+      "status": "PASS",
+      "detail": {
+        "scroll": 768,
+        "width": 768
+      }
+    },
+    {
+      "name": "Responsive 900px",
+      "status": "PASS",
+      "detail": {
+        "scroll": 900,
+        "width": 900
+      }
+    },
+    {
+      "name": "Responsive 1365px",
+      "status": "PASS",
+      "detail": {
+        "scroll": 1365,
+        "width": 1365
+      }
+    },
+    {
+      "name": "Mobile touch targets and result navigation",
+      "status": "PASS",
+      "detail": {
+        "summary": 44,
+        "label": 44,
+        "font": "16px"
+      }
+    },
+    {
+      "name": "Favicon returns image without fallback 404",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker synchronous constructor failure recovers",
+      "status": "PASS",
+      "detail": "Không thể khởi tạo bộ tính toán. Hãy tải lại trang hoặc dùng trình duyệt hỗ trợ Web Worker."
+    },
+    {
+      "name": "Worker synchronous post failure recovers",
+      "status": "PASS",
+      "detail": "Không thể gửi dữ liệu đến bộ tính toán. Hãy thử lại hoặc nhập bảng nhỏ hơn."
+    },
+    {
+      "name": "Published core rejects underflow and sparse inputs",
+      "status": "PASS",
+      "detail": {
+        "underflow": true,
+        "sparse": true
+      }
+    },
+    {
+      "name": "Runtime console and page errors",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "limits": [
+    "Chưa thử điện thoại thật/Safari",
+    "Chưa chứng nhận WCAG hoặc an ninh toàn diện",
+    "Không có backend tài khoản hoặc cơ sở dữ liệu trên server"
+  ],
+  "harnessNotes": [
+    {
+      "cases": [
+        37,
+        40
+      ],
+      "original": "Fixture mốt bị yêu cầu có .00 trong assertion đầu; UI hiển thị canonical 1, -2, 0.",
+      "fix": "Đối chiếu đúng tập giá trị số và tần suất, không bắt buộc phần thập phân thừa. Hai ca được chạy lại trước; sau khi siết so khớp toàn chuỗi số và bổ sung console.error, toàn bộ 23 ca bổ sung được chạy lại và đều đạt.",
+      "classification": "Lỗi test, không sửa sản phẩm"
+    }
+  ]
+}
